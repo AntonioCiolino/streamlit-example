@@ -56,8 +56,7 @@ st.session_state.api_key = st.text_input('enter your api key here', st.session_s
 prompt = st.text_input('Prompt to process', '')
 
 openAI = OAI()
-d = Tables()
-d.load_tables()
+d = Tables.Tables.load_tables()
 st.session_state.sel = st.sidebar.selectbox('Select a table', st.session_state.random_tables.keys())
 thing = st.sidebar.button('Get random thing', on_click=d.get_random_thing)
 storydir = 'story'
