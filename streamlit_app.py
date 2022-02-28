@@ -80,12 +80,11 @@ st.session_state.sel = st.sidebar.selectbox('Select a table', st.session_state.r
 thing = st.sidebar.button('Get random thing', on_click=d.get_random_thing)
 storydir = 'story'
 
-st.write(st.session_state.chapter)
 st.session_state.chapter = st.text_input('edit this content', st.session_state.chapter)
 st.session_state.api_key = st.text_input('enter your api key here', st.session_state.api_key)
 
 # call openAI
 if (st.session_state.api_key != ""):
     openai.api_key=st.session_state.api_key
-    prompt = "create a " + "metaphor" + " from the following sentence.\n" + "i was very hungry" + "\n---\n\n"
+    prompt = "create a " + "metaphor" + " from the following sentence.\n" + st.session_state.chapter + "\n---\n\n"
     st.sidebar.button("execute query", on_click=openAI.get_query(prompt))
