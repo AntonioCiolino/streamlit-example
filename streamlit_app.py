@@ -47,5 +47,6 @@ class Tables:
 
 d = Tables()
 d.load_tables()
-st.session_state.sel = st.sidebar.selectbox('Select a table', st.session_state.random_tables.keys(), on_change=d.get_random_thing)
+st.session_state.sel = st.sidebar.selectbox('Select a table', st.session_state.random_tables.keys())
 storydir = 'story'
+result = random.choice(st.session_state.random_tables[st.session_state.sel])
