@@ -14,8 +14,6 @@ if 'random_tables' not in st.session_state:
     st.session_state.random_tables = {}
 if 'sel' not in st.session_state:
     st.session_state.sel = ""
-if 'text_area' not in st.session_state:
-    st.session_state.text_area = "Example text goes here"
 
 class Tables:
     def __init__(self, **kwargs):
@@ -36,7 +34,7 @@ class Tables:
 
     def get_random_thing(self):
         try:
-            st.session_stte.text_area +=  random.choice(st.session_state.random_tables[st.session_state.sel])
+            return random.choice(st.session_state.random_tables[st.session_state.sel])
         except Exception as oops:
             st.write('ERROR in get_random_thing function:', oops)
 
