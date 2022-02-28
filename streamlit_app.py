@@ -72,7 +72,7 @@ class OAI:
             st.write('ERROR in get_query function:', oops)
 
 
-
+OAI = OAI()
 d = Tables()
 d.load_tables()
 st.session_state.sel = st.sidebar.selectbox('Select a table', st.session_state.random_tables.keys())
