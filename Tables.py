@@ -4,9 +4,6 @@ import streamlit as st
 
 class Tables:
     def __init__(self, **kwargs):
-        pass
-
-    def load_tables(self):
         tables = {}
         with open('tables1e.csv') as data_file:
             data = csv.reader(data_file, delimiter='\t')
