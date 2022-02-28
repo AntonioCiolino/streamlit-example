@@ -14,6 +14,8 @@ if 'chapter' not in st.session_state:
     st.session_state.chapter = "Example text goes here"
 if 'api_key' not in st.session_state:
     st.session_state.api_key = ""
+if 'result' not in st.session_state:
+    st.session_state.result = ""
 
 class Tables:
     def __init__(self, **kwargs):
@@ -77,4 +79,6 @@ st.session_state.api_key = st.text_input('enter your api key here', st.session_s
 if (st.session_state.api_key != ""):
     openai.api_key=st.session_state.api_key
     prompt = "create a " + "metaphor" + " from the following sentence.\n" + "i was very hungry" + "\n---\n\n"
-    query = st.sidebar.button("execute query", on_click=lambda: st.write(OAI.completion(prompt, model)))
+    query = st.sidebar.button("execute query", on_click=lambda: OAI.completion(prompt, model))
+    st.session_state.result=query
+    st.write(st.session_state.result)
