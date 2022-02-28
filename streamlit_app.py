@@ -16,6 +16,7 @@ class Demo:
     selected_table = None
     def __init__(self, **kwargs):
         random_tables = self.load_random_tables()
+        st.write(random_tables)
 
 
     def load_random_tables(self):
