@@ -16,7 +16,7 @@ class Demo:
     def __init__(self, **kwargs):
         random_tables = self.load_random_tables()
 
-        st.selectbox('Select a table', random_tables.keys(), on_change=lambda x: self.get_random_thing(x))
+        st.selectbox('Select a table', random_tables.keys(), on_change=lambda selected_table: self.get_random_thing(selected_table))
         self.storydir = 'story'
         st.write("init finished")
 
