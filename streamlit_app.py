@@ -14,7 +14,7 @@ if 'random_tables' not in st.session_state:
     st.session_state.random_tables = {}
 if 'sel' not in st.session_state:
     st.session_state.sel = ""
-if 'text_area' not in st.session_state:
+if 'chapter' not in st.session_state:
     st.session_state.chapter = "Example text goes here"
 
 class Tables:
