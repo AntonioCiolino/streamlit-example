@@ -1,7 +1,3 @@
-from collections import namedtuple
-import altair as alt
-import math
-import pandas as pd
 import streamlit as st
 import csv
 import random
@@ -45,3 +41,4 @@ storydir = 'story'
 
 st.write(st.session_state.chapter)
 mytext = st.text_area()
+st.text(st.session_state.chapter)
