@@ -12,6 +12,8 @@ import random
 model = "curie:ft-vtcnp-2022-02-23-00-34-41"
 table_selected = ""
 
+st.write("started")
+
 def __init__(self, **kwargs):
     random_tables = self.load_random_tables()
     st.write(random_tables)
@@ -42,3 +44,5 @@ def get_random_thing(self, button):
     except Exception as oops:
         print('ERROR in get_random_thing function:', oops)
         st.logging.fatal('ERROR in get_random_thing function: %s', oops)
+
+st.write("done")
