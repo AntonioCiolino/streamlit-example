@@ -16,7 +16,6 @@ class Demo:
     selected_table = None
     def __init__(self, **kwargs):
         random_tables = self.load_random_tables()
-        st.write(random_tables)
 
 
     def load_random_tables(self):
@@ -47,5 +46,6 @@ class Demo:
 
 d = Demo()
 d.load_random_tables()
+st.write(d.random_tables)
 selected_table = st.sidebar.selectbox('Select a table', d.random_tables.keys(), on_change=d.get_random_thing)
 storydir = 'story'
