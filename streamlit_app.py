@@ -76,5 +76,5 @@ st.session_state.api_key = st.text_input('enter your api key here', st.session_s
 # call openAI
 openai.api_key=st.session_state.api_key
 prompt = "create a " + "metaphor" + " from the following sentence.\n" + "i was very hungry" + "\n---\n\n"
-result = OAI.ompletion(prompt, "text-davinci-001").replace("\n", "").replace("---", "").replace("###", "")
-st.write (str(result))
+query = st.sidebar.button("execute query", on_click=OAI.completion(prompt, "text-davinci-001").replace("\n", "").replace("---", "").replace("###", ""))
+st.write(str(query))
