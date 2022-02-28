@@ -36,6 +36,7 @@ class Demo:
 
     def get_random_thing(self):
         self.info = 'Getting random thing...'
+        st.write(self.table_selected)
         try:
             result = random.choice(self.random_tables[self.table_selected])
             st.write(result)
