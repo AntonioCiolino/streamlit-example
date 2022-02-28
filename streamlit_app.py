@@ -10,10 +10,10 @@ import random
 # st.logging.debug('Debugging started.')
 
 model = "curie:ft-vtcnp-2022-02-23-00-34-41"
+if 'random_tables' not in st.session_state:
+    st.session_state.random_tables = {}
 
-class Demo:
-    random_tables = {}
-
+class Tables:
     def __init__(self, **kwargs):
         pass
 
@@ -27,7 +27,7 @@ class Demo:
                     tables[current_table] = []
                 else:
                     tables[current_table].append(row[1])
-        self.random_tables = tables
+        st.session_state.random_tables = tables
 
     def get_random_thing(self):
         st.write(selected_table)
@@ -35,15 +35,14 @@ class Demo:
 
         st.write("Getting from " + selected_table)
         try:
-            result = random.choice(self.random_tables[selected_table])
+            result = random.choice(st.session_state.random_tables[selected_table])
             st.write(result)
         except Exception as oops:
             st.write('ERROR in get_random_thing function:', oops)
 
 
 
-d = Demo()
+d = Tables()
 d.load_tables()
-st.write(d.random_tables)
 selected_table = st.sidebar.selectbox('Select a table', d.random_tables.keys(), on_change=d.get_random_thing)
 storydir = 'story'
