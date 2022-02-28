@@ -5,8 +5,6 @@ import Features
 import Tables
 import Writing
 
-model = "curie:ft-vtcnp-2022-02-23-00-34-41"
-api_key = "enter your key here"
 
 if 'random_tables' not in st.session_state:
     st.session_state.random_tables = {}
