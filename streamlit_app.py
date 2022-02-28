@@ -6,7 +6,7 @@ import streamlit as st
 import csv
 import random
 
-st.logging.basicConfig(filename='kivyUI.log', level=st.logging.INFO, filemode="w")
+# st.logging.basicConfig(filename='kivyUI.log', level=st.logging.INFO, filemode="w")
 st.logging.debug('Debugging started.')
 
 model = "curie:ft-vtcnp-2022-02-23-00-34-41"
