@@ -51,7 +51,7 @@ d.load_tables()
 buttons = []
 
 for i in enumerate(st.session_state.random_tables.keys()):
-    buttons.append(st.button(str(i)))
+    buttons.append(st.button(str(i.value)))
 
 for i, button in enumerate(buttons):
     if button:
