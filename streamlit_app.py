@@ -12,6 +12,8 @@ import random
 model = "curie:ft-vtcnp-2022-02-23-00-34-41"
 if 'random_tables' not in st.session_state:
     st.session_state.random_tables = {}
+if 'sel' not in st.session_state:
+    st.session_state.sel = ""
 
 class Tables:
     def __init__(self, **kwargs):
@@ -44,5 +46,5 @@ class Tables:
 
 d = Tables()
 d.load_tables()
-selected_table = st.sidebar.selectbox('Select a table', st.session_state.random_tables.keys(), on_change=d.get_random_thing)
+st.session_state.sel = st.sidebar.selectbox('Select a table', st.session_state.random_tables.keys(), on_change=d.get_random_thing)
 storydir = 'story'
