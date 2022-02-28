@@ -13,11 +13,10 @@ model = "curie:ft-vtcnp-2022-02-23-00-34-41"
 
 class Demo:
     random_tables = {}
-    table_selected = ""
     def __init__(self, **kwargs):
         random_tables = self.load_random_tables()
 
-        self.table_selected = st.selectbox('Select a table', random_tables.keys(), on_change=lambda x: self.get_random_thing(x))
+        st.selectbox('Select a table', random_tables.keys(), on_change=lambda x: self.get_random_thing(x))
         self.storydir = 'story'
         st.write("init finished")
 
@@ -34,14 +33,14 @@ class Demo:
                     tables[current_table].append(row[1])
         return tables
 
-    def get_random_thing(self):
+    def get_random_thing(self, selected_table):
         self.info = 'Getting random thing...'
-        if (self.table_selected == ''):
+        if (selected_table == ''):
             return
 
-        st.write(self.table_selected)
+        st.write(selected_table)
         try:
-            result = random.choice(self.random_tables[self.table_selected])
+            result = random.choice(self.random_tables[selected_table])
             st.write(result)
         except Exception as oops:
             st.write('ERROR in get_random_thing function:', oops)
