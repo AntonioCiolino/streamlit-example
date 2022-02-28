@@ -45,5 +45,6 @@ class Demo:
 
 
 d = Demo()
+d.load_random_tables()
 selected_table = st.sidebar.selectbox('Select a table', d.random_tables.keys(), on_change=d.get_random_thing)
 storydir = 'story'
