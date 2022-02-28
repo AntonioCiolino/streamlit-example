@@ -21,7 +21,6 @@ class Tables:
 
     def load_tables(self):
         tables = {}
-        tables["Select a row"] = []
         with open('tables1e.csv') as data_file:
             data = csv.reader(data_file, delimiter='\t')
             for row in data:
@@ -51,7 +50,7 @@ d.load_tables()
 buttons = []
 
 for i, v in enumerate(st.session_state.random_tables.keys()):
-    buttons.append(st.button(label = str(v)))
+    buttons.append(st.sidebar.button(label = str(v)))
 
 for i, button in enumerate(buttons):
     if button:
