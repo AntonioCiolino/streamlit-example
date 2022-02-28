@@ -17,7 +17,7 @@ class Demo:
     def __init__(self, **kwargs):
         random_tables = self.load_random_tables()
 
-        self.selected_table = st.sidebar.selectbox('Select a table', random_tables.keys(), format_func=lambda x: self.get_random_thing(x))
+        self.selected_table = st.sidebar.selectbox('Select a table', random_tables.keys(), on_change=lambda x: self.get_random_thing())
         self.storydir = 'story'
         st.write("init finished")
 
@@ -34,10 +34,10 @@ class Demo:
                     tables[current_table].append(row[1])
         return tables
 
-    def get_random_thing(self, x):
+    def get_random_thing(self):
         st.write(self.selected_table)
         self.info = 'Getting random thing...'
-        if (self.selected_table == ''):
+        if (self.selected_table == None):
             return
 
         st.write(self.selected_table)
