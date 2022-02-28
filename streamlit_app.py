@@ -35,7 +35,7 @@ class Demo:
         return tables
 
     def get_random_thing(self):
-        st.write(self.selected_table)
+        st.write(st.sidebar.selectbox)
         self.info = 'Getting random thing...'
 
         st.write(self.selected_table)
