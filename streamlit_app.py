@@ -37,8 +37,6 @@ class Demo:
     def get_random_thing(self):
         st.write(self.selected_table)
         self.info = 'Getting random thing...'
-        if (self.selected_table == None):
-            return
 
         st.write(self.selected_table)
         try:
