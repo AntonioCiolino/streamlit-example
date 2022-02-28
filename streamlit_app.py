@@ -49,4 +49,4 @@ st.session_state.sel = st.sidebar.selectbox('Select a table', st.session_state.r
 thing = st.sidebar.button('Get random thing', on_click=d.get_random_thing)
 storydir = 'story'
 
-st.text_area('editor', 'example')
+st.text_area('editor', '''example''')
