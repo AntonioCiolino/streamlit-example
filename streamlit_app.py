@@ -16,8 +16,6 @@ if 'api_key' not in st.session_state:
     st.session_state.api_key = ""
 if 'result' not in st.session_state:
     st.session_state.result = ""
-if 'prompt' not in st.session_state:
-    st.session_state.prompt = ""
 
 class Tables:
     def __init__(self, **kwargs):
@@ -69,15 +67,16 @@ class OAI:
 
     def get_query(self, prompt):
         try:
-            st.session_state.prompt = OAI.completion(prompt, model, temp=0.73, top_p=1.0, tokens=100, freq_pen=1.73, pres_pen=0.43, stop=["END", "Scene:", "[Scene"])
-            st.session_state.chapter += st.session_state.prompt
+            result = OAI.completion(prompt, model, temp=0.73, top_p=1.0, tokens=100, freq_pen=1.73, pres_pen=0.43, stop=["END", "Scene:", "[Scene"])
+            st.session_state.chapter += result
             st.write(st.session_state.chapter)  # this is the text that is displayed on the page
         except Exception as oops:
             st.write('ERROR in get_query function:', oops)
 
 
+
 st.session_state.api_key = st.text_input('enter your api key here', st.session_state.api_key)
-st.session_state.prompt = st.text_input('Prompt to process', st.session_state.prompt)
+prompt = st.text_input('Prompt to process', '')
 
 openAI = OAI()
 d = Tables()
@@ -89,7 +88,7 @@ storydir = 'story'
 st.session_state.chapter = st.text_input('edit this chapter', st.session_state.chapter)
 
 # call openAI
-if (st.session_state.api_key != "" and st.session_state.prompt != ""):
+if (st.session_state.api_key != "" and prompt != ""):
     openai.api_key=st.session_state.api_key
-    prompt = "create a " + "metaphor" + " from the following sentence.\n" + st.session_state.prompt + "\n---\n\n"
-    st.sidebar.button("execute query", on_click=openAI.get_query(prompt))
+    c_prompt = "create a " + "metaphor" + " from the following sentence.\n" + prompt + "\n---\n\n"
+    st.sidebar.button("execute query", on_click=openAI.get_query(c_ prompt))
