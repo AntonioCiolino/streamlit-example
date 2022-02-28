@@ -41,6 +41,7 @@ class Demo:
 
         st.write(self.selected_table)
         try:
+            st.write(self.random_tables)
             result = random.choice(self.random_tables[self.selected_table])
             st.write(result)
         except Exception as oops:
