@@ -1,6 +1,7 @@
 
 import csv
 import random
+import streamlit as st
 
 class Tables:
     def __init__(self, **kwargs):

@@ -1,5 +1,6 @@
 import streamlit as st
 import openai
+import Tables
 
 model = "curie:ft-vtcnp-2022-02-23-00-34-41"
 api_key = "enter your key here"
