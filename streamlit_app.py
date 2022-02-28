@@ -42,6 +42,3 @@ d.load_tables()
 st.session_state.sel = st.sidebar.selectbox('Select a table', st.session_state.random_tables.keys())
 thing = st.sidebar.button('Get random thing', on_click=d.get_random_thing)
 storydir = 'story'
-
-t = st.text_area()
-
