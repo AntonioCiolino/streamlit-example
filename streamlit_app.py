@@ -21,7 +21,7 @@ class Tables:
 
     def load_tables(self):
         tables = {}
-        tables["Select a row"] = ""
+        tables["Select a row"] = []
         with open('tables1e.csv') as data_file:
             data = csv.reader(data_file, delimiter='\t')
             for row in data:
@@ -56,7 +56,7 @@ for i, v in enumerate(st.session_state.random_tables.keys()):
 for i, button in enumerate(buttons):
     if button:
         st.write(f"{i} button was clicked")
-        st.write(st.session_state.random_tables)
+        st.write(st.session_state.random_tables.keys()[i])
 
 
 st.session_state.sel = st.sidebar.selectbox('Select a table', st.session_state.random_tables.keys(), on_change=d.get_random_thing, args=())
