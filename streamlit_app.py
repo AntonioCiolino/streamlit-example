@@ -37,7 +37,7 @@ class Demo:
     def get_random_thing(self):
         self.info = 'Getting random thing...'
         try:
-            result = random.choice(self.random_tables[table_selected])
+            result = random.choice(self.random_tables[self.table_selected])
             st.write(result)
         except Exception as oops:
             st.write('ERROR in get_random_thing function:', oops)
