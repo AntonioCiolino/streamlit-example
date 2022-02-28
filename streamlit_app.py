@@ -46,5 +46,4 @@ class Demo:
 
 d = Demo()
 selected_table = st.sidebar.selectbox('Select a table', d.random_tables.keys(), on_change=d.get_random_thing)
-st.write("Init: " + selected_table)
 storydir = 'story'
