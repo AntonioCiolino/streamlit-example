@@ -19,6 +19,7 @@ class Tables:
     def __init__(self, **kwargs):
         pass
 
+    @st.cache(show_spinner=False)
     def load_tables(self):
         tables = {}
         with open('tables1e.csv') as data_file:
@@ -32,10 +33,8 @@ class Tables:
         st.session_state.random_tables = tables
 
     def get_random_thing(self):
-        st.write(st.session_state.sel)
         self.info = 'Getting random thing...'
 
-        st.write("Getting from " + st.session_state.sel)
         try:
             result = random.choice(st.session_state.random_tables[st.session_state.sel])
             st.write(result)
@@ -46,17 +45,6 @@ class Tables:
 
 d = Tables()
 d.load_tables()
-
-buttons = []
-
-for i, v in enumerate(st.session_state.random_tables.keys()):
-    buttons.append(st.sidebar.button(label = str(v)))
-
-for i, button in enumerate(buttons):
-    if button:
-        st.write(f"{i} button was clicked")
-        st.write(list(st.session_state.random_tables.keys())[i])
-
 
 st.session_state.sel = st.sidebar.selectbox('Select a table', st.session_state.random_tables.keys())
 st.sidebar.button('Get random thing', on_click=d.get_random_thing)
