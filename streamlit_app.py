@@ -65,7 +65,7 @@ openAI = OAI()
 Tables.Tables()
 Features.Features()
 st.session_state.sel = st.sidebar.selectbox('Select a table', st.session_state.random_tables.keys())
-st.session_state.feat = st.sidebar.selectbox('Select a feature', st.session_state.features.keys())
+st.session_state.feat = st.sidebar.selectbox('Select a feature', st.session_state.features)
 thing = st.sidebar.button('Get random thing', on_click=d.get_random_thing)
 storydir = 'story'
 
