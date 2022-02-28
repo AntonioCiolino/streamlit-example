@@ -4,6 +4,8 @@ import random
 import streamlit as st
 
 class Writing:
+    model = "curie:ft-vtcnp-2022-02-23-00-34-41"
+
     def __init__(self):
         openai.api_key=st.session_state.api_key
 
@@ -34,11 +36,8 @@ class Writing:
 
     def get_query(self, prompt):
 
-        model = "curie:ft-vtcnp-2022-02-23-00-34-41"
-
-        st.write("*** sent " + prompt)
         try:
-            result = self.completion(prompt=prompt, model=model)
+            result = self.completion(prompt, self.model)
             st.session_state.chapter += result
             st.write(st.session_state.chapter)  # this is the text that is displayed on the page
         except Exception as oops:
