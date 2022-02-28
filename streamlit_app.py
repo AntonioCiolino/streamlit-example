@@ -53,7 +53,7 @@ buttons = []
 for i in range(st.session_state.random_tables.keys().__len__()):
     buttons.append(st.button(str(i)))
 
-for i, button in enumerate(st.session_state.random_tables.keys()):
+for i, button in enumerate(buttons):
     if button:
         st.write(f"{i} button was clicked")
 
