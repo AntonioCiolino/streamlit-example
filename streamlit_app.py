@@ -36,7 +36,7 @@ class Tables:
 
     def get_random_thing(self):
         try:
-            st.session_stte.text_area +=  random.choice(st.session_state.random_tables[st.session_state.sel])
+            st.session_state.text_area +=  random.choice(st.session_state.random_tables[st.session_state.sel])
         except Exception as oops:
             st.write('ERROR in get_random_thing function:', oops)
 
@@ -49,3 +49,5 @@ st.session_state.sel = st.sidebar.selectbox('Select a table', st.session_state.r
 thing = st.sidebar.button('Get random thing', on_click=d.get_random_thing)
 storydir = 'story'
 
+
+st.text_area = st.session_state.text_area
