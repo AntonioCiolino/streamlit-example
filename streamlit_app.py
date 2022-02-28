@@ -12,13 +12,10 @@ import random
 model = "curie:ft-vtcnp-2022-02-23-00-34-41"
 
 class Demo:
+    random_tables = {}
     selected_table = None
     def __init__(self, **kwargs):
         random_tables = self.load_random_tables()
-        self.selected_table = st.sidebar.selectbox('Select a table', random_tables.keys(), on_change=self.get_random_thing)
-        st.write("Init: " + self.selected_table)
-        self.storydir = 'story'
-        st.write("init finished")
 
 
     def load_random_tables(self):
@@ -47,5 +44,7 @@ class Demo:
 
 
 
-Demo()
-st.write("done")
+d = Demo()
+selected_table = st.sidebar.selectbox('Select a table', d.random_tables.keys(), on_change=d.get_random_thing)
+st.write("Init: " + selected_table)
+storydir = 'story'
