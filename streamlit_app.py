@@ -85,7 +85,7 @@ st.session_state.sel = st.sidebar.selectbox('Select a table', st.session_state.r
 thing = st.sidebar.button('Get random thing', on_click=d.get_random_thing)
 storydir = 'story'
 
-st.session_state.chapter = st.text_input('edit this chapter', st.session_state.chapter)
+st.session_state.chapter = st.text_are('edit this chapter', st.session_state.chapter)
 
 # call openAI
 if (st.session_state.api_key != "" and prompt != ""):
