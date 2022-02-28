@@ -34,6 +34,7 @@ class Demo:
         return tables
 
     def get_random_thing(self, selected_table):
+        st.write(selected_table)
         self.info = 'Getting random thing...'
         if (selected_table == ''):
             return
