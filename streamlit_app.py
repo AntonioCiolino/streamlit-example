@@ -14,6 +14,8 @@ if 'random_tables' not in st.session_state:
     st.session_state.random_tables = {}
 if 'sel' not in st.session_state:
     st.session_state.sel = ""
+if 'chapter' not in st.session_state:
+    st.session_state.chapter = "Example text goes here"
 
 class Tables:
     def __init__(self, **kwargs):
@@ -33,11 +35,8 @@ class Tables:
         st.session_state.random_tables = tables
 
     def get_random_thing(self):
-        self.info = 'Getting random thing...'
-
         try:
-            result = random.choice(st.session_state.random_tables[st.session_state.sel])
-            st.write(result)
+            st.text_area +=  random.choice(st.session_state.random_tables[st.session_state.sel])
         except Exception as oops:
             st.write('ERROR in get_random_thing function:', oops)
 
@@ -47,9 +46,8 @@ d = Tables()
 d.load_tables()
 
 st.session_state.sel = st.sidebar.selectbox('Select a table', st.session_state.random_tables.keys())
-st.sidebar.button('Get random thing', on_click=d.get_random_thing)
+thing = st.sidebar.button('Get random thing', on_click=d.get_random_thing)
 storydir = 'story'
-
 
 txt = st.text_area('Text to analyze', '''
      It was the best of times, it was the worst of times, it was
