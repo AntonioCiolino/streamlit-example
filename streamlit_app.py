@@ -27,7 +27,7 @@ class Demo:
                     tables[current_table] = []
                 else:
                     tables[current_table].append(row[1])
-        return tables
+        self.random_tables = tables
 
     def get_random_thing(self, selected_table):
         st.write(selected_table)
