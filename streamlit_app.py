@@ -41,5 +41,3 @@ storydir = 'story'
 
 st.write(st.session_state.chapter)
 st.text_input(st.session_state.chapter)
-
-st.text_area("Text to analyze", ''', (...)''')
