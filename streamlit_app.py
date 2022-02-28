@@ -10,14 +10,12 @@ import random
 # st.logging.debug('Debugging started.')
 
 model = "curie:ft-vtcnp-2022-02-23-00-34-41"
-table_selected = ""
-
-st.write("started")
 
 class Demo:
+    random_tables = []
+    table_selected = ""
     def __init__(self, **kwargs):
         random_tables = self.load_random_tables()
-        st.write(random_tables)
 
         self.table_selected = st.selectbox('Select a table', random_tables.keys(), on_change=self.get_random_thing())
         self.storydir = 'story'
@@ -38,13 +36,11 @@ class Demo:
 
     def get_random_thing(self):
         self.info = 'Getting random thing...'
-        all_tables = self.load_random_tables()
         try:
-            result = random.choice(all_tables[table_selected])
+            result = random.choice(self.random_tables[table_selected])
             st.write(result)
         except Exception as oops:
-            print('ERROR in get_random_thing function:', oops)
-            st.logging.fatal('ERROR in get_random_thing function: %s', oops)
+            st.write('ERROR in get_random_thing function:', oops)
 
 
 
