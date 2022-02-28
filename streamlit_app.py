@@ -70,7 +70,7 @@ class OAI:
     def get_query(self, prompt):
         try:
             st.session_state.prompt = OAI.completion(prompt, model, temp=0.73, top_p=1.0, tokens=100, freq_pen=1.73, pres_pen=0.43, stop=["END", "Scene:", "[Scene"])
-            st.session_state.chapter = st.session_state.result
+            st.session_state.chapter += st.session_state.prompt
             st.write(st.session_state.chapter)  # this is the text that is displayed on the page
         except Exception as oops:
             st.write('ERROR in get_query function:', oops)
@@ -86,7 +86,7 @@ st.session_state.sel = st.sidebar.selectbox('Select a table', st.session_state.r
 thing = st.sidebar.button('Get random thing', on_click=d.get_random_thing)
 storydir = 'story'
 
-st.session_state.chapter = st.text_input('edit this content', st.session_state.chapter)
+st.session_state.chapter = st.text_input('edit this chapter', st.session_state.chapter)
 
 # call openAI
 if (st.session_state.api_key != "" and st.session_state.prompt != ""):
