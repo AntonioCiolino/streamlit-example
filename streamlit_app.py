@@ -19,9 +19,7 @@ def __init__(self, **kwargs):
     self.table_selected = st.selectbox('Select a table', random_tables.keys(), on_change=self.get_random_thing())
     self.storydir = 'story'
 
-"""
- Find the table entries based not he keys that are in the select box
-"""
+
 def load_random_tables(self):
     tables = {}
     with open('tables1e.csv') as data_file:
