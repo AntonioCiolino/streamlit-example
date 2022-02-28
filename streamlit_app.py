@@ -37,7 +37,7 @@ class Tables:
         except Exception as oops:
             st.write('ERROR in get_random_thing function:', oops)
 
-class OpenAI:
+class OAI:
     def completion(prompt, model, temp=0.73, top_p=1.0, tokens=500, freq_pen=1.73, pres_pen=0.43, stop=["END", "Scene:", "[Scene"]):
         try:
             # fine-tuned models requires model parameter, whereas other models require engine parameter
@@ -76,5 +76,5 @@ st.session_state.api_key = st.text_input('enter your api key here', st.session_s
 # call openAI
 openai.api_key=st.session_state.api_key
 prompt = "create a " + "metaphor" + " from the following sentence.\n" + "i was very hungry" + "\n---\n\n"
-result = OpenAI.ompletion(prompt, "text-davinci-001").replace("\n", "").replace("---", "").replace("###", "")
+result = OAI.ompletion(prompt, "text-davinci-001").replace("\n", "").replace("---", "").replace("###", "")
 st.write (str(result))
