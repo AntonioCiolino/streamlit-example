@@ -2,6 +2,7 @@ from collections import namedtuple
 import altair as alt
 import math
 import pandas as pd
+import self
 import streamlit as st
 import csv
 import random
@@ -14,13 +15,12 @@ table_selected = ""
 
 st.write("started")
 
-def __init__(self, **kwargs):
-    random_tables = self.load_random_tables()
-    st.write(random_tables)
+random_tables = self.load_random_tables()
+st.write(random_tables)
 
-    self.table_selected = st.selectbox('Select a table', random_tables.keys(), on_change=self.get_random_thing())
-    self.storydir = 'story'
-    st.write("init finished")
+table_selected = st.selectbox('Select a table', random_tables.keys(), on_change=self.get_random_thing())
+storydir = 'story'
+st.write("init finished")
 
 
 def load_random_tables(self):
