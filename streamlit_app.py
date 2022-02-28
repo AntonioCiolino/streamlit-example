@@ -40,5 +40,5 @@ thing = st.sidebar.button('Get random thing', on_click=d.get_random_thing)
 storydir = 'story'
 
 st.write(st.session_state.chapter)
-st.text_input('edit this content', st.session_state.chapter)
+st.session_state.chapter = st.text_input('edit this content', st.session_state.chapter)
 
