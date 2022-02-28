@@ -36,6 +36,7 @@ class Writing:
 
         model = "curie:ft-vtcnp-2022-02-23-00-34-41"
 
+        st.write("*** sent " + prompt)
         try:
             result = self.completion(prompt=prompt, model=model)
             st.session_state.chapter += result
