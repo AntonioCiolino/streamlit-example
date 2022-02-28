@@ -15,6 +15,9 @@ class Demo:
     random_tables = {}
 
     def __init__(self, **kwargs):
+        pass
+
+    def load_tables(self):
         tables = {}
         with open('tables1e.csv') as data_file:
             data = csv.reader(data_file, delimiter='\t')
@@ -40,7 +43,7 @@ class Demo:
 
 
 d = Demo()
-d.load_random_tables()
+d.load_tables()
 st.write(d.random_tables)
 selected_table = st.sidebar.selectbox('Select a table', d.random_tables.keys(), on_change=d.get_random_thing)
 storydir = 'story'
