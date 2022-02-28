@@ -8,7 +8,7 @@ class Features:
         with open('features.csv') as data_file:
             data = csv.reader(data_file, delimiter='\t')
             for row in data:
-                features.append(row)
+                features.append(row[0])
 
         st.session_state.features = features
     #
