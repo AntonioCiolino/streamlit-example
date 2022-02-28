@@ -15,7 +15,7 @@ class Demo:
     random_tables = {}
     selected_table = None
     def __init__(self, **kwargs):
-        random_tables = self.load_random_tables()
+        self.random_tables = self.load_random_tables()
 
 
     def load_random_tables(self):
