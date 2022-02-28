@@ -11,9 +11,9 @@ class Features:
                 features.append(row)
 
         st.session_state.features = features
-
-    def get_random_thing(self):
-        try:
-            st.session_state.chapter += " " + random.choice(st.session_state.features[st.session_state.feat])
-        except Exception as oops:
-            st.write('ERROR in get_random_thing function:', oops)
+    #
+    # def get_random_thing(self):
+    #     try:
+    #         st.session_state.chapter += " " + random.choice(st.session_state.features[st.session_state.feat])
+    #     except Exception as oops:
+    #         st.write('ERROR in get_random_thing function:', oops)

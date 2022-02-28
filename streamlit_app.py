@@ -62,7 +62,7 @@ st.session_state.api_key = st.text_input('enter your api key here', st.session_s
 prompt = st.text_input('Prompt to process', '')
 
 openAI = OAI()
-Tables.Tables()
+d = Tables.Tables()
 Features.Features()
 st.session_state.sel = st.sidebar.selectbox('Select a table', st.session_state.random_tables.keys())
 st.session_state.feat = st.sidebar.selectbox('Select a feature', st.session_state.features)
