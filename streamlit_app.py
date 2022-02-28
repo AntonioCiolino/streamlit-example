@@ -72,7 +72,7 @@ class OAI:
             st.write('ERROR in get_query function:', oops)
 
 
-OAI = OAI()
+openAI = OAI()
 d = Tables()
 d.load_tables()
 st.session_state.sel = st.sidebar.selectbox('Select a table', st.session_state.random_tables.keys())
@@ -87,4 +87,4 @@ st.session_state.api_key = st.text_input('enter your api key here', st.session_s
 if (st.session_state.api_key != ""):
     openai.api_key=st.session_state.api_key
     prompt = "create a " + "metaphor" + " from the following sentence.\n" + "i was very hungry" + "\n---\n\n"
-    st.sidebar.button("execute query", on_click=OAI.get_query)
+    st.sidebar.button("execute query", on_click=openAI.get_query)
