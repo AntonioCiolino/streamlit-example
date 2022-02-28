@@ -1,5 +1,7 @@
 import streamlit as st
 import openai
+
+import Features
 import Tables
 
 model = "curie:ft-vtcnp-2022-02-23-00-34-41"
@@ -60,7 +62,8 @@ st.session_state.api_key = st.text_input('enter your api key here', st.session_s
 prompt = st.text_input('Prompt to process', '')
 
 openAI = OAI()
-d = Tables.Tables()
+Tables.Tables()
+Features.Features()
 st.session_state.sel = st.sidebar.selectbox('Select a table', st.session_state.random_tables.keys())
 st.session_state.feat = st.sidebar.selectbox('Select a feature', st.session_state.features.keys())
 thing = st.sidebar.button('Get random thing', on_click=d.get_random_thing)
