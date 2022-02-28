@@ -18,7 +18,6 @@ class Tables:
     def __init__(self, **kwargs):
         pass
 
-    @st.cache(show_spinner=True)
     def load_tables(self):
         tables = {}
         with open('tables1e.csv') as data_file:
