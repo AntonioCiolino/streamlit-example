@@ -37,7 +37,7 @@ class Writing:
         model = "curie:ft-vtcnp-2022-02-23-00-34-41"
 
         try:
-            result = self.completion(prompt, model)
+            result = self.completion(prompt=prompt, model=model)
             st.session_state.chapter += result
             st.write(st.session_state.chapter)  # this is the text that is displayed on the page
         except Exception as oops:
