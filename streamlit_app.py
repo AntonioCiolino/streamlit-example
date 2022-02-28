@@ -73,6 +73,7 @@ class OAI:
             st.write('ERROR in get_query function:', oops)
 
 
+st.write(st.session_state.chapter)
 openAI = OAI()
 d = Tables()
 d.load_tables()
