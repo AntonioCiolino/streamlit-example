@@ -48,4 +48,5 @@ class Demo:
 
 
 
+Demo()
 st.write("done")
