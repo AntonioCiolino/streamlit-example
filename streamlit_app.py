@@ -56,7 +56,7 @@ for i, v in enumerate(st.session_state.random_tables.keys()):
 for i, button in enumerate(buttons):
     if button:
         st.write(f"{i} button was clicked")
-        st.write(st.session_state.random_tables.keys().find(i.label))
+        st.write(st.session_state.random_tables.keys().values()[i])
 
 
 st.session_state.sel = st.sidebar.selectbox('Select a table', st.session_state.random_tables.keys(), on_change=d.get_random_thing, args=())
