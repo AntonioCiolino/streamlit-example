@@ -36,11 +36,11 @@ class Demo:
                     tables[current_table].append(row[1])
         return tables
 
-    def get_random_thing(self, button):
+    def get_random_thing(self):
         self.info = 'Getting random thing...'
         all_tables = self.load_random_tables()
         try:
-            result = random.choice(all_tables[button.text])
+            result = random.choice(all_tables[table_selected])
             st.write(result)
         except Exception as oops:
             print('ERROR in get_random_thing function:', oops)
