@@ -59,5 +59,6 @@ for i, button in enumerate(buttons):
         st.write(list(st.session_state.random_tables.keys())[i])
 
 
-st.session_state.sel = st.sidebar.selectbox('Select a table', st.session_state.random_tables.keys(), on_change=d.get_random_thing, args=())
+st.session_state.sel = st.sidebar.selectbox('Select a table', st.session_state.random_tables.keys())
+st.button('Get random thing', on_click=d.get_random_thing)
 storydir = 'story'
