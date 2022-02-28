@@ -16,7 +16,7 @@ class Demo:
     def __init__(self, **kwargs):
         random_tables = self.load_random_tables()
         self.selected_table = st.sidebar.selectbox('Select a table', random_tables.keys(), on_change=self.get_random_thing)
-        st.write(self.selected_table)
+        st.write("Init: " + self.selected_table)
         self.storydir = 'story'
         st.write("init finished")
 
@@ -38,7 +38,7 @@ class Demo:
         st.write(self.selected_table)
         self.info = 'Getting random thing...'
 
-        st.write(self.selected_table)
+        st.write("Getting from " + self.selected_table)
         try:
             result = random.choice(random_tables[self.selected_table])
             st.write(result)
