@@ -33,7 +33,7 @@ class Demo:
                     tables[current_table].append(row[1])
         return tables
 
-    def get_random_thing(self):
+    def get_random_thing(self, x):
         st.write(self.selected_table)
         self.info = 'Getting random thing...'
         if (self.selected_table == ''):
