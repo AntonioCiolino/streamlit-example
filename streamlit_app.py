@@ -50,7 +50,7 @@ class OAI:
                 else {"engine": model}
             )
 
-            st.write(prompt)
+            st.write("*** sent " + prompt)
             response = openai.Completion.create(
                 prompt=prompt,
                 temperature=temp,
