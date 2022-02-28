@@ -21,6 +21,7 @@ class Tables:
 
     def load_tables(self):
         tables = {}
+        tables["select"] = "Select a row"
         with open('tables1e.csv') as data_file:
             data = csv.reader(data_file, delimiter='\t')
             for row in data:
