@@ -6,9 +6,6 @@ import streamlit as st
 import csv
 import random
 
-# st.logging.basicConfig(filename='kivyUI.log', level=st.logging.INFO, filemode="w")
-# st.logging.debug('Debugging started.')
-
 model = "curie:ft-vtcnp-2022-02-23-00-34-41"
 if 'random_tables' not in st.session_state:
     st.session_state.random_tables = {}
@@ -21,7 +18,7 @@ class Tables:
     def __init__(self, **kwargs):
         pass
 
-    @st.cache(show_spinner=False)
+    @st.cache(show_spinner=True)
     def load_tables(self):
         tables = {}
         with open('tables1e.csv') as data_file:
@@ -41,10 +38,8 @@ class Tables:
             st.write('ERROR in get_random_thing function:', oops)
 
 
-
 d = Tables()
 d.load_tables()
-
 st.session_state.sel = st.sidebar.selectbox('Select a table', st.session_state.random_tables.keys())
 thing = st.sidebar.button('Get random thing', on_click=d.get_random_thing)
 storydir = 'story'
