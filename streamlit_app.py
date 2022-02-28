@@ -91,4 +91,4 @@ st.session_state.chapter = st.text_input('edit this chapter', st.session_state.c
 if (st.session_state.api_key != "" and prompt != ""):
     openai.api_key=st.session_state.api_key
     c_prompt = "create a " + "metaphor" + " from the following sentence.\n" + prompt + "\n---\n\n"
-    st.sidebar.button("execute query", on_click=openAI.get_query(c_ prompt))
+    st.sidebar.button("execute query", on_click=openAI.get_query(c_prompt))
