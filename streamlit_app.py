@@ -47,6 +47,16 @@ class Tables:
 
 d = Tables()
 d.load_tables()
-st.session_state.sel = st.sidebar.selectbox('Select a table', st.session_state.random_tables.keys())
+
+buttons = []
+
+for i in range(st.session_state.random_tables.keys().__len__()):
+    buttons.append(st.button(str(i)))
+
+for i, button in enumerate(st.session_state.random_tables.keys()):
+    if button:
+        st.write(f"{i} button was clicked")
+
+
+st.session_state.sel = st.sidebar.selectbox('Select a table', st.session_state.random_tables.keys(), on_change=d.get_random_thing, args=())
 storydir = 'story'
-result = random.choice(st.session_state.random_tables[st.session_state.sel])
