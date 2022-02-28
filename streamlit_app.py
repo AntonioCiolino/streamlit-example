@@ -36,6 +36,9 @@ class Demo:
 
     def get_random_thing(self):
         self.info = 'Getting random thing...'
+        if (self.table_selected == ''):
+            return
+
         st.write(self.table_selected)
         try:
             result = random.choice(self.random_tables[self.table_selected])
