@@ -32,12 +32,12 @@ class Tables:
         st.session_state.random_tables = tables
 
     def get_random_thing(self):
-        st.write(selected_table)
+        st.write(st.session_state.sel)
         self.info = 'Getting random thing...'
 
-        st.write("Getting from " + selected_table)
+        st.write("Getting from " + st.session_state.sel)
         try:
-            result = random.choice(st.session_state.random_tables[selected_table])
+            result = random.choice(st.session_state.random_tables[st.session_state.sel])
             st.write(result)
         except Exception as oops:
             st.write('ERROR in get_random_thing function:', oops)
