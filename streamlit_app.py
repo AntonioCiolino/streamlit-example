@@ -18,6 +18,7 @@ def __init__(self, **kwargs):
 
     self.table_selected = st.selectbox('Select a table', random_tables.keys(), on_change=self.get_random_thing())
     self.storydir = 'story'
+    st.write("init finished")
 
 
 def load_random_tables(self):
