@@ -26,8 +26,6 @@ if 'result' not in st.session_state:
     st.session_state.result = ""
 if 'models' not in st.session_state:
     st.session_state.models = []
-if 'upper' not in st.session_state:
-    st.session_state.upper = ""
 
 
 with st.expander("Enter your API Key here"):
@@ -67,6 +65,10 @@ else:
             st.session_state.chapter += Writing.Writing().get_generic_content(prompt)
 
         st.sidebar.info("Use the content box to enhance chapter content. Note that this takes the whole chapter; we do not handle highlighting and custom selection yet.")
+        chapter = st_quill()
+        if (chapter != st.session_state.chapter):
+            st.success("Updated Content")
+            st.session_state.chapter = chapter
 
         #completions vs. tuning.
         if (st.sidebar.button('Run tuned content', help="Calls OpenAI for fine tuned content.")):
@@ -74,13 +76,6 @@ else:
         elif (st.sidebar.button('Run generic content', help="Calls OpenAI for classic DaVinci content.")):
             st.session_state.chapter += Writing.Writing().completeDavinci(st.session_state.chapter)
 
-        chapter = st_quill(key='upper')
-        st.write("quill in session state?: " + st.session_state.upper)
-        if (chapter != st.session_state.chapter):
-            st.success("Updated Content")
-            st_quill(value=st.session_state.chapter, key='lower')
-            st.session_state.chapter = chapter
 
-        st.write(chapter)
-        st.write(st.session_state.chapter)
+
         submit_button = st.form_submit_button(label='Submit')
