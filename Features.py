@@ -13,7 +13,6 @@ class Features:
                 self.features.append(str(row[0]))
                 self.prompts.append(str(row[1]))
 
-        st.session_state.features = self.features
 
     def get_prompt(self, item):
         try:
