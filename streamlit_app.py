@@ -26,12 +26,12 @@ st.session_state.api_key = st.text_input('enter your api key here', st.session_s
 prompt = st.text_input('Prompt to process', ''  )
 
 writing = Writing.Writing()
-d = Tables.Tables()
 st.session_state.features = Features.Features.features
 
 st.session_state.sel = st.sidebar.selectbox('Select a table', st.session_state.random_tables.keys())
+thing = st.sidebar.button('Get random thing', on_click=Tables.Tables.get_random_thing)
+
 st.session_state.feat = st.sidebar.selectbox('Select a feature', st.session_state.features)
-thing = st.sidebar.button('Get random thing', on_click=d.get_random_thing)
 
 st.session_state.chapter = st.text_area('edit this chapter', st.session_state.chapter)
 
