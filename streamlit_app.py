@@ -6,9 +6,9 @@ import Tables
 import Writing
 
 # Title of the page
-st.title('Writing tool')
-st.header("Lorem Ipsum.")
-st.subheader("Lorem Ipsum su dolor emet.")
+st.title('Geezify')
+# st.header("Lorem Ipsum.")
+# st.subheader("Lorem Ipsum su dolor emet.")
 
 if 'random_tables' not in st.session_state:
     st.session_state.random_tables = {}
