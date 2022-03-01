@@ -42,10 +42,13 @@ st.session_state.feat = st.sidebar.selectbox('Select a feature', st.session_stat
 
 # call openAI
 if (st.session_state.api_key != "" and prompt != ""):
-    if (st.sidebar.button('Get tuned content')):
+    if (st.sidebar.button('Generate tuned content')):
         st.session_state.chapter += Writing.Writing().get_tuned_content(prompt)
-    if (st.sidebar.button('Get generic content')):
+    if (st.sidebar.button('Generate generic content')):
         st.session_state.chapter += Writing.Writing().get_generic_content(prompt)
+
+    "<hr />"
+
     #completions vs. tuning.
     if (st.sidebar.button('Complete tuned content')):
         st.session_state.chapter += prompt + " " + Writing.Writing().completeModel(prompt)
