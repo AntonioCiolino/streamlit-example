@@ -6,7 +6,7 @@ import Tables
 import Writing
 
 def update_content():
-    pass
+    st.write("on_change called")
 
 
 # Title of the page
