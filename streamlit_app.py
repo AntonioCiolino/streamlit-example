@@ -8,7 +8,7 @@ import Writing
 # Title of the page
 st.title('Geezify')
 # st.header("Lorem Ipsum.")
-# st.subheader("Lorem Ipsum su dolor emet.")
+st.subheader("Use this tool to call OpenAI and enhance existing writing, or add additional flair to whatever content you have.")
 
 if 'random_tables' not in st.session_state:
     st.session_state.random_tables = {}
