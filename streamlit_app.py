@@ -33,7 +33,7 @@ thing = st.sidebar.button('Get random thing', on_click=Tables.Tables().get_rando
 
 st.session_state.feat = st.sidebar.selectbox('Select a feature', st.session_state.features)
 
-chapter = st.text_area('edit this chapter')
+chapter = st.text_area('edit this chapter', st.session_state.chapter)
 
 
 # call openAI
