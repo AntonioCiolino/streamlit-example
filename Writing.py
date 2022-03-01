@@ -30,6 +30,7 @@ class Writing:
                 stop=stop,
                 **model_param)
             response = response['choices'][0]['text']
+            st.write("response: " + response)
             return response
         except Exception as oops:
             return "Completion Error: " + str(oops)
