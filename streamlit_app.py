@@ -31,12 +31,15 @@ f = Features.Features()
 st.session_state.sel = st.sidebar.selectbox('Select a table', st.session_state.random_tables.keys())
 st.session_state.feat = st.sidebar.selectbox('Select a feature', st.session_state.features)
 thing = st.sidebar.button('Get random thing', on_click=d.get_random_thing)
+
+
 storydir = 'story'
 
 st.session_state.chapter = st.text_area('edit this chapter', st.session_state.chapter)
 
 # call openAI
 if (st.session_state.api_key != "" and prompt != ""):
-    c_prompt = "create a " + st.session_state.feat + " from the following sentence:\n" + prompt + "\n---\n\n"
-    st.sidebar.button("execute query", on_click=writing.get_query(c_prompt))
-    prompt = ''
+    # st.sidebar.button("Get specific content", on_click=writing.get_query(prompt))
+    tuned = st.sidebar.button('Get tuned content', on_click=writing.get_tuned_content(prompt))
+    generic = st.sidebar.button('Get generic conent', on_click=writing.get_generic_content(prompt))
+

@@ -8,12 +8,12 @@ class Features:
         with open('features.csv') as data_file:
             data = csv.reader(data_file, delimiter='\t')
             for row in data:
-                features.append(row[0])
+                features.append(row[0] + "|" + row[1])
 
         st.session_state.features = features
-    #
-    # def get_random_thing(self):
-    #     try:
-    #         st.session_state.chapter += " " + random.choice(st.session_state.features[st.session_state.feat])
-    #     except Exception as oops:
-    #         st.write('ERROR in get_random_thing function:', oops)
+
+    def get_prompt(self, item):
+        try:
+            return st.session_state.features[item]
+        except Exception as oops:
+            st.write('ERROR in get_prompt function:', oops)

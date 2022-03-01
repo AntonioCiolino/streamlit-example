@@ -45,3 +45,21 @@ class Writing:
         except Exception as oops:
             st.write('ERROR in get_query function:', str(oops))
 
+    def get_tuned_content(self, prompt):
+        try:
+            st.write(st.session_state.feat)
+            result = self.write(prompt, self.model)
+            st.session_state.chapter += result
+            # st.write(st.session_state.chapter)  # this is the text that is displayed on the page
+        except Exception as oops:
+            st.write('ERROR in get_query function:', str(oops))
+
+    def get_generic_content(self, prompt):
+        try:
+            result = self.write(prompt, "text-davinci-001")
+            st.session_state.chapter += result
+            # st.write(st.session_state.chapter)  # this is the text that is displayed on the page
+        except Exception as oops:
+            st.write('ERROR in get_query function:', str(oops))
+
+
