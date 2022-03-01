@@ -76,7 +76,7 @@ class Writing:
             finetunes = openai.FineTune.list()
             st.write(finetunes.data)
             for row in finetunes.data:
-                if (row[0].status == "succeeded" and row[0].result_files.status != "deleted"):
+                if (row.status == "succeeded" and row.result_files.status != "deleted"):
                     models.append(row.fine_tuned_model)
 
             return models
