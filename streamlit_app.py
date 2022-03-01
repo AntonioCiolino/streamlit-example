@@ -42,13 +42,13 @@ st.session_state.feat = st.sidebar.selectbox('Select a feature', st.session_stat
 
 # call openAI
 if (st.session_state.api_key != "" and prompt != ""):
-    st.info("Use GPT-3 to Generate content")
+    st.sidebar.info("Use GPT-3 to Generate content")
     if (st.sidebar.button('Generate tuned content')):
         st.session_state.chapter += Writing.Writing().get_tuned_content(prompt)
     if (st.sidebar.button('Generate generic content')):
         st.session_state.chapter += Writing.Writing().get_generic_content(prompt)
 
-    st.info("Use GPT-3 to Complete content")
+    st.sidebar.info("Use GPT-3 to Complete content")
 
     #completions vs. tuning.
     if (st.sidebar.button('Run tuned content')):
