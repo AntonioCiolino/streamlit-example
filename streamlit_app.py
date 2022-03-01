@@ -40,7 +40,7 @@ chapter = st.text_area('edit this chapter')
 if (st.session_state.api_key != "" and prompt != ""):
     # st.sidebar.button("Get specific content", on_click=writing.get_query(prompt))
     if (st.sidebar.button('Get tuned content')):
-        tuned = st.sidebar.button('Get tuned content', on_click=Writing.Writing().get_tuned_content(prompt))
+        Writing.Writing().get_tuned_content(prompt)
     if (st.sidebar.button('Get generic content')):
-        generic = st.sidebar.button('Get generic content', on_click=Writing.Writing().get_generic_content(prompt))
+        Writing.Writing().get_generic_content(prompt)
 
