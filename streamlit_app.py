@@ -38,7 +38,7 @@ else:
         st.session_state.models = Writing.Writing().getModels()
     model = st.selectbox("Select a model", st.session_state.models)
 
-    prompt = st.text_input('Prompt to process', '', help="Enter a prompt to process.")
+    prompt = st.text_input('Prompt to process', '', help="Enter a prompt to process. Used only for the features selection box.")
 
     st.session_state.features = Features.Features.features
     st.session_state.random_tables = Tables.Tables().random_tables
@@ -53,7 +53,7 @@ else:
 
     # for the prompt, if the prompt is blank, disable the controls, but still render.
     d = (prompt == "")
-    st.sidebar.info("Use GPT-3 to Generate content. This will use the \"Prompt to process\" box.")
+    st.sidebar.info("Use the select box to generate content. This will use the \"Prompt to process\" box.")
     st.session_state.feat = st.sidebar.selectbox('Select a feature', st.session_state.features, disabled = d,
                                                  help="Requests data from GPT-3 in the selected style.")
 
@@ -63,7 +63,7 @@ else:
         st.session_state.chapter += Writing.Writing().get_generic_content(prompt)
 
 
-    st.sidebar.info("Use GPT-3 to Complete content. This will run from the chapter content, not the prompt!")
+    st.sidebar.info("Use the content box to enhance chapter content. Note that this takes the whole chapter; we do not handle highlighting and custom selection yet.")
 
     #completions vs. tuning.
     if (st.sidebar.button('Run tuned content', help="Calls OpenAI for fine tuned content.")):
