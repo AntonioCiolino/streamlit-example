@@ -69,8 +69,12 @@ class Writing:
 
 
     def getModels(self):
+        models = []
         try:
             models = openai.FineTune.list()
-            return models.data
+            for row in models:
+                models.append(row.data.id)
+
+            return models
         except Exception as oops:
             st.error('ERROR in getModels function: ' + str(oops))
