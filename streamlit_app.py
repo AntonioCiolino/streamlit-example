@@ -32,6 +32,7 @@ st.session_state.sel = st.sidebar.selectbox('Select a table', st.session_state.r
 
 st.session_state.feat = st.sidebar.selectbox('Select a feature', st.session_state.features)
 
+# detemine button stuff before displaying or loading text boxes
 if st.sidebar.button('Get random thing'):
     st.write("Getting random thing")
     st.session_state.chapter += " " + Tables.Tables().get_random_thing()
@@ -44,9 +45,8 @@ if (chapter != st.session_state.chapter):
 
 # call openAI
 if (st.session_state.api_key != "" and prompt != ""):
-    # st.sidebar.button("Get specific content", on_click=writing.get_query(prompt))
     if (st.sidebar.button('Get tuned content')):
-        Writing.Writing().get_tuned_content(prompt)
+        st.session_state.chapter += Writing.Writing().get_tuned_content(prompt)
     if (st.sidebar.button('Get generic content')):
-        Writing.Writing().get_generic_content(prompt)
+        st.session_state.chapter += Writing.Writing().get_generic_content(prompt)
 

@@ -39,27 +39,16 @@ class Writing:
         except Exception as oops:
             return "Completion Error: " + str(oops)
 
-    def get_query(self, prompt):
-        try:
-            result = self.write(prompt, self.model)
-            st.session_state.chapter += result
-            # st.write(st.session_state.chapter)  # this is the text that is displayed on the page
-        except Exception as oops:
-            st.write('ERROR in get_query function:', str(oops))
-
     def get_tuned_content(self, prompt):
         try:
             p = self.features.get_prompt(st.session_state.feat)
-            result = self.write(p, self.model)
-            st.session_state.chapter += result
-            # st.write(st.session_state.chapter)  # this is the text that is displayed on the page
+            return self.write(p, self.model)
         except Exception as oops:
             st.write('ERROR in get_query function:', str(oops))
 
     def get_generic_content(self, prompt):
         try:
-            result = self.write(prompt, "text-davinci-001")
-            st.session_state.chapter += result
+            return self.write(prompt, "text-davinci-001")
         except Exception as oops:
             st.write('ERROR in get_query function:', str(oops))
 
