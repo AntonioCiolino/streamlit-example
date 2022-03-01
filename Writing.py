@@ -4,7 +4,8 @@ import random
 import streamlit as st
 import logging
 
-logger.setLevel('DEBUG')
+logging.basicConfig(filename='kivyUI.log', level=logging.INFO, filemode="w")
+logging.debug('Debugging started.')
 
 class Writing:
     model = "curie:ft-vtcnp-2022-02-23-00-34-41"
