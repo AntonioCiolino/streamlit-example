@@ -47,7 +47,7 @@ if (st.session_state.api_key != "" and prompt != ""):
     if (st.sidebar.button('Get generic content')):
         st.session_state.chapter += Writing.Writing().get_generic_content(prompt)
 
-chapter = st.text_area('edit this chapter', st.session_state.chapter,  height=None)
+chapter = st.text_area('edit this chapter', st.session_state.chapter,  height=500px)
 if (chapter != st.session_state.chapter):
-    st.success("editing chapter")
+    st.success("Updating chapter")
     st.session_state.chapter = chapter
