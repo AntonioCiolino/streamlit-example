@@ -35,47 +35,47 @@ if (st.session_state.api_key == ""):
     st.write("You need to enter your API Key to use this tool.")
 else:
 
-    with st.form(key='my_form'):
-        if (st.session_state.models == []):
-            st.session_state.models = Writing.Writing().getModels()
-        model = st.selectbox("Select a model", st.session_state.models)
+    #with st.form(key='my_form'):
+    if (st.session_state.models == []):
+        st.session_state.models = Writing.Writing().getModels()
+    model = st.selectbox("Select a model", st.session_state.models)
 
-        prompt = st.text_input('Prompt to process', '', help="Enter a prompt to process. Used only for the features selection box.")
+    prompt = st.text_input('Prompt to process', '', help="Enter a prompt to process. Used only for the features selection box.")
 
-        st.session_state.features = Features.Features.features
-        st.session_state.random_tables = Tables.Tables().random_tables
+    st.session_state.features = Features.Features.features
+    st.session_state.random_tables = Tables.Tables().random_tables
 
-        st.session_state.sel = st.sidebar.selectbox('Create random table content', st.session_state.random_tables.keys(),
-                                                    help="Select a random table to pull content from.")
+    st.session_state.sel = st.sidebar.selectbox('Create random table content', st.session_state.random_tables.keys(),
+                                                help="Select a random table to pull content from.")
 
-        # detemine button stuff before displaying or loading text boxes
-        if st.sidebar.button('Get random thing', help="Add a random thing to the content from a list of items."):
-            st.info("Added random thing", )
-            st.session_state.chapter += "\n" + Tables.Tables().get_random_thing()
+    # detemine button stuff before displaying or loading text boxes
+    if st.sidebar.button('Get random thing', help="Add a random thing to the content from a list of items."):
+        st.info("Added random thing", )
+        st.session_state.chapter += "\n" + Tables.Tables().get_random_thing()
 
-        # for the prompt, if the prompt is blank, disable the controls, but still render.
-        d = (prompt == "")
-        st.sidebar.info("Use the select box to generate content. This will use the \"Prompt to process\" box.")
-        st.session_state.feat = st.sidebar.selectbox('Select a feature', st.session_state.features, disabled = d,
-                                                     help="Requests data from GPT-3 in the selected style.")
+    # for the prompt, if the prompt is blank, disable the controls, but still render.
+    d = (prompt == "")
+    st.sidebar.info("Use the select box to generate content. This will use the \"Prompt to process\" box.")
+    st.session_state.feat = st.sidebar.selectbox('Select a feature', st.session_state.features, disabled = d,
+                                                 help="Requests data from GPT-3 in the selected style.")
 
-        if (st.sidebar.button('Generate tuned content', help="Calls OpenAI for fine tuned content based on the prompt.", disabled = d)):
-            st.session_state.chapter += Writing.Writing().get_tuned_content(prompt, model)
-        elif (st.sidebar.button('Generate generic content', help="Calls OpenAI for Davinci content based no the prompt.", disabled = d)):
-            st.session_state.chapter += Writing.Writing().get_generic_content(prompt)
+    if (st.sidebar.button('Generate tuned content', help="Calls OpenAI for fine tuned content based on the prompt.", disabled = d)):
+        st.session_state.chapter += Writing.Writing().get_tuned_content(prompt, model)
+    elif (st.sidebar.button('Generate generic content', help="Calls OpenAI for Davinci content based no the prompt.", disabled = d)):
+        st.session_state.chapter += Writing.Writing().get_generic_content(prompt)
 
 
-        st.sidebar.info("Use the content box to enhance chapter content. Note that this takes the whole chapter; we do not handle highlighting and custom selection yet.")
-        #completions vs. tuning.
-        if (st.sidebar.button('Run tuned content', help="Calls OpenAI for fine tuned content.")):
-            st.session_state.chapter += Writing.Writing().completeModel(st.session_state.chapter, model)
-        if (st.sidebar.button('Run generic content', help="Calls OpenAI for classic DaVinci content.")):
-            st.session_state.chapter += Writing.Writing().completeDavinci(st.session_state.chapter)
+    st.sidebar.info("Use the content box to enhance chapter content. Note that this takes the whole chapter; we do not handle highlighting and custom selection yet.")
+    #completions vs. tuning.
+    if (st.sidebar.button('Run tuned content', help="Calls OpenAI for fine tuned content.")):
+        st.session_state.chapter += Writing.Writing().completeModel(st.session_state.chapter, model)
+    if (st.sidebar.button('Run generic content', help="Calls OpenAI for classic DaVinci content.")):
+        st.session_state.chapter += Writing.Writing().completeDavinci(st.session_state.chapter)
 
-        #not setting the text allow this to work correctly with a submit button.
-        cpost = st.text_area(label="edit your chapter", value=st.session_state.chapter,help="This is the main body for writing.", height=500, key="chapter")
-        if (cpost != st.session_state.chapter):
-            st.session_state.chapter = cpost
+    #not setting the text allow this to work correctly with a submit button.
+    cpost = st.text_area(label="edit your chapter", value=st.session_state.chapter,help="This is the main body for writing.", height=500, key="chapter")
+    if (cpost != st.session_state.chapter):
+        st.session_state.chapter = cpost
 
         # st.success("Session state Content: "+ st.session_state.chapter)
-        submit_button = st.form_submit_button(label='Submit')
+        #submit_button = st.form_submit_button(label='Submit')
