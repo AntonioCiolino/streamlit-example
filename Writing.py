@@ -39,7 +39,7 @@ class Writing:
     def get_tuned_content(self, prompt):
         try:
             p = self.features.get_prompt(st.session_state.feat)
-            p = "".format(p, prompt)
+            p = p.format(prompt)
             st.write(p)
             return self.write(p, self.model)
         except Exception as oops:
@@ -48,7 +48,7 @@ class Writing:
     def get_generic_content(self, prompt):
         try:
             p = self.features.get_prompt(st.session_state.feat)
-            p = "".format(p, prompt)
+            p = p.format(prompt)
             st.write( p)
             return self.write(p, "text-davinci-001")
         except Exception as oops:
