@@ -34,7 +34,7 @@ thing = st.sidebar.button('Get random thing', on_click=Tables.Tables().get_rando
 st.session_state.feat = st.sidebar.selectbox('Select a feature', st.session_state.features)
 
 chapter = st.text_area('edit this chapter', st.session_state.chapter)
-sw.write_chapter(chapter)
+st.writer(chapter)
 st.session_state.chapter = chapter
 
 
