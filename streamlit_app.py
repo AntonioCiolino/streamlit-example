@@ -36,6 +36,8 @@ if (st.session_state.api_key == ""):
 else:
 
     #with st.form(key='my_form'):
+    chapter = st.text_area(st.session_state.chapter)
+
     if (st.session_state.models == []):
         st.session_state.models = Writing.Writing().getModels()
     model = st.selectbox("Select a model", st.session_state.models)
@@ -72,7 +74,6 @@ else:
     elif (st.sidebar.button('Run generic content', help="Calls OpenAI for classic DaVinci content.")):
         st.session_state.chapter += Writing.Writing().completeDavinci(st.session_state.chapter)
 
-    st.session_state.chapter = st.text_area(st.session_state.chapter)
 
     st.success("Session state Content: "+ st.session_state.chapter)
 
