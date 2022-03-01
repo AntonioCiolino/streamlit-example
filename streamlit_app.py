@@ -31,12 +31,13 @@ with st.expander("Enter your API Key here"):
 if (st.session_state.api_key == ""):
     st.write("You need to enter your API Key to use this tool.")
 else:
-    prompt = st.text_input('Prompt to process', '')
+    prompt = st.text_input('Prompt to process', '', help="Enter a prompt to process.")
 
     st.session_state.features = Features.Features.features
     st.session_state.random_tables = Tables.Tables().random_tables
 
-    st.session_state.sel = st.sidebar.selectbox('Create random table content', st.session_state.random_tables.keys())
+    st.session_state.sel = st.sidebar.selectbox('Create random table content', st.session_state.random_tables.keys(),
+                                                help="Select a random table to pull content from.")
 
     # detemine button stuff before displaying or loading text boxes
     if st.sidebar.button('Get random thing', help="Add a random thing to the content from a list of items."):
@@ -46,7 +47,8 @@ else:
     # for the prompt, if the prompt is blank, disable the controls, but still render.
     d = (prompt == "")
     st.sidebar.info("Use GPT-3 to Generate content. This will use the \"Prompt to process\" box.")
-    st.session_state.feat = st.sidebar.selectbox('Select a feature', st.session_state.features, disabled = d)
+    st.session_state.feat = st.sidebar.selectbox('Select a feature', st.session_state.features, disabled = d,
+                                                 help="Requests data from GPT-3 in the selected style.")
 
     if (st.sidebar.button('Generate tuned content', help="Calls OpenAI for fine tuned content based on the prompt.", disabled = d)):
         st.session_state.chapter += Writing.Writing().get_tuned_content(prompt)
