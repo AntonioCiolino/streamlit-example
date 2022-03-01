@@ -79,7 +79,6 @@ class Writing:
                 if (row['status'] == "succeeded" and row['result_files']['status'] != "deleted"):
                     models.append(row.fine_tuned_model)
 
-            st.write(models)
             return models
         except Exception as oops:
             st.error('ERROR in getModels function: ' + str(oops))
