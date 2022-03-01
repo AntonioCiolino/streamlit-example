@@ -72,7 +72,8 @@ else:
         elif (st.sidebar.button('Run generic content', help="Calls OpenAI for classic DaVinci content.")):
             st.session_state.chapter += Writing.Writing().completeDavinci(st.session_state.chapter)
 
-        chapter = st.text_area(label="edit your chapter", help="This is the main body for writing.")
+        #not setting the text allow this to work correctly with a submit button.
+        chapter = st.text_area(label="edit your chapter", value=st.session_state.chapter,help="This is the main body for writing.")
         if (chapter != st.session_state.chapter):
             st.session_state.chapter = chapter
         else:
