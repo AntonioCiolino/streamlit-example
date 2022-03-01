@@ -71,10 +71,10 @@ else:
         st.session_state.chapter += Writing.Writing().completeModel(st.session_state.chapter, model)
     elif (st.sidebar.button('Run generic content', help="Calls OpenAI for classic DaVinci content.")):
         st.session_state.chapter += Writing.Writing().completeDavinci(st.session_state.chapter)
-    else:
-        chapter = st_quill(st.session_state.chapter)
-        if (chapter != st.session_state.chapter and chapter != ""):
-            st.session_state.chapter = chapter
+
+    chapter = st_quill(st.session_state.chapter)
+    if (chapter != st.session_state.chapter and chapter != ""):
+        st.session_state.chapter = chapter
 
     st.success("Session state Content: "+ st.session_state.chapter)
 
