@@ -33,7 +33,7 @@ class Writing:
             response = response['choices'][0]['text']
             return response
         except Exception as oops:
-            return str(oops)
+            return "Error: " + str(oops)
 
     def get_query(self, prompt):
         try:
