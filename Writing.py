@@ -39,7 +39,7 @@ class Writing:
         try:
             result = self.write(prompt, self.model)
             # st.write("*** got back " + result)
-            st.session_state.chapter += result
+            st.session_state.chapter += result[0]
             # st.write(st.session_state.chapter)  # this is the text that is displayed on the page
         except Exception as oops:
             st.write('ERROR in get_query function:', str(oops))
