@@ -61,15 +61,15 @@ else:
 
         if (st.sidebar.button('Generate tuned content', help="Calls OpenAI for fine tuned content based on the prompt.", disabled = d)):
             st.session_state.chapter += Writing.Writing().get_tuned_content(prompt, model)
-        if (st.sidebar.button('Generate generic content', help="Calls OpenAI for Davinci content based no the prompt.", disabled = d)):
+        elif (st.sidebar.button('Generate generic content', help="Calls OpenAI for Davinci content based no the prompt.", disabled = d)):
             st.session_state.chapter += Writing.Writing().get_generic_content(prompt)
+        else:
+            chapter = st_quill()
+            if (chapter != st.session_state.chapter):
+                st.session_state.chapter = chapter
+                st.success("Updated Content: "+ st.session_state.chapter)
 
         st.sidebar.info("Use the content box to enhance chapter content. Note that this takes the whole chapter; we do not handle highlighting and custom selection yet.")
-        chapter = st_quill()
-        if (chapter != st.session_state.chapter):
-            st.session_state.chapter = chapter
-            st.success("Updated Content: "+ st.session_state.chapter)
-
         #completions vs. tuning.
         if (st.sidebar.button('Run tuned content', help="Calls OpenAI for fine tuned content.")):
             st.session_state.chapter += Writing.Writing().completeModel(st.session_state.chapter, model)
