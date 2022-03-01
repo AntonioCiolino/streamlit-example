@@ -74,9 +74,8 @@ class Writing:
         models.append("text-curie-001")
         try:
             finetunes = openai.FineTune.list()
-            st.write(finetunes.data)
             for row in finetunes.data:
-                st.write(row['status'])
+                st.write(row['result_files'])
                 if (row['status'] == "succeeded" and row['result_files']['status'] != "deleted"):
                     models.append(row.fine_tuned_model)
 
