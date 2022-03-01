@@ -24,6 +24,8 @@ if 'api_key' not in st.session_state:
     st.session_state.api_key = ""
 if 'result' not in st.session_state:
     st.session_state.result = ""
+if 'models' not in st.session_state:
+    st.session_state.models = []
 
 
 with st.expander("Enter your API Key here"):
@@ -32,8 +34,9 @@ with st.expander("Enter your API Key here"):
 if (st.session_state.api_key == ""):
     st.write("You need to enter your API Key to use this tool.")
 else:
-    model = Writing.Writing().getModels()
-    st.selectbox("Select a model", model)
+    if (st.session_state.models == []):
+        st.session_state.models = Writing.Writing().getModels()
+    st.selectbox("Select a model", st.session_state.models)
 
     prompt = st.text_input('Prompt to process', '', help="Enter a prompt to process.")
 
