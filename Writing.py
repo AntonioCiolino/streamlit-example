@@ -34,7 +34,7 @@ class Writing:
             st.write("*** got back " + response)
             return response
         except Exception as oops:
-            return "Error: " + str(oops)
+            return "Completion Error: " + str(oops)
 
     def get_query(self, prompt):
         try:
