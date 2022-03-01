@@ -5,6 +5,10 @@ import Features
 import Tables
 import Writing
 
+def update_content():
+    pass
+
+
 # Title of the page
 st.title('OpenAI Geezify')
 # st.header("Lorem Ipsum.")
@@ -73,7 +77,8 @@ else:
         st.session_state.chapter += Writing.Writing().completeDavinci(st.session_state.chapter)
 
     #not setting the text allow this to work correctly with a submit button.
-    cpost = st.text_area(label="edit your chapter", value=st.session_state.chapter,help="This is the main body for writing.", height=500, key="chapter")
+    cpost = st.text_area(label="edit your chapter", value=st.session_state.chapter,help="This is the main body for writing.", height=500, key="chapter",
+                         on_change="update_content")
     if (cpost != st.session_state.chapter):
         st.session_state.chapter = cpost
 
