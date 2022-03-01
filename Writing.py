@@ -35,6 +35,7 @@ class Writing:
                 response = response['choices'][0]['text']
                 return response
             except Exception as oops:
+                st.error("Completion Error: " + str(oops))
                 return "Completion Error: " + str(oops)
 
     def get_tuned_content(self, prompt, model):

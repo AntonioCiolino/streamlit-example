@@ -37,7 +37,6 @@ else:
     if (st.session_state.models == []):
         st.session_state.models = Writing.Writing().getModels()
     model = st.selectbox("Select a model", st.session_state.models)
-    st.info(model)
 
     prompt = st.text_input('Prompt to process', '', help="Enter a prompt to process.")
 
