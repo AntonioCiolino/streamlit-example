@@ -2,7 +2,7 @@ import openai
 import csv
 import random
 import streamlit as st
-import logger
+import logging
 
 logger.setLevel('DEBUG')
 
