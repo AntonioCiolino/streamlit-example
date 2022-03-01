@@ -73,7 +73,7 @@ else:
             st.session_state.chapter += Writing.Writing().completeDavinci(st.session_state.chapter)
         else:
             chapter = st_quill()
-            if (chapter != st.session_state.chapter):
+            if (chapter != st.session_state.chapter and chapter != ""):
                 st.session_state.chapter = chapter
 
         st.success("Session state Content: "+ st.session_state.chapter)
