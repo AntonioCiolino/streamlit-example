@@ -72,7 +72,7 @@ else:
         elif (st.sidebar.button('Run generic content', help="Calls OpenAI for classic DaVinci content.")):
             st.session_state.chapter += Writing.Writing().completeDavinci(st.session_state.chapter)
 
-        chapter = st.text_area(st.session_state.chapter, help="This is the main body for writing.")
+        chapter = st.text_area(value = st.session_state.chapter, help="This is the main body for writing.")
         if (chapter != st.session_state.chapter):
             st.session_state.chapter = chapter
 
