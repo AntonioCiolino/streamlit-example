@@ -28,6 +28,8 @@ prompt = st.text_input('Prompt to process', '')
 st.session_state.features = Features.Features.features
 st.session_state.random_tables = Tables.Tables.random_tables
 
+st.write(st.session_state.random_tables )
+
 st.session_state.sel = st.sidebar.selectbox('Select a table', st.session_state.random_tables.keys())
 
 st.session_state.feat = st.sidebar.selectbox('Select a feature', st.session_state.features)
