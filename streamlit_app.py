@@ -6,7 +6,7 @@ import Tables
 import Writing
 
 # Title of the page
-#st.title('Streamlit Tutorial')
+st.title('Writing tool')
 st.header("Lorem Ipsum.")
 st.subheader("Lorem Ipsum su dolor emet.")
 
