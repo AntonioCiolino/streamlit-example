@@ -75,7 +75,6 @@ class Writing:
         models.append("text-curie-001")
         try:
             model_list = openai.Model.list()
-            st.write(model_list.data)
             for row in model_list.data:
                 if (row["owned_by"] != "openai" and row["owned_by"] != "system"):
                     models.append(row.id)
