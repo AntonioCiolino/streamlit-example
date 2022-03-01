@@ -72,7 +72,7 @@ class Writing:
         models = []
         try:
             finetunes = openai.FineTune.list()
-            finetunes
+            st.write(finetunes)
             for row in finetunes:
                 models.append(row.data.id)
 
