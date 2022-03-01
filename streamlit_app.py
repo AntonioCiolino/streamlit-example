@@ -36,7 +36,7 @@ if (st.session_state.api_key == ""):
 else:
 
     #with st.form(key='my_form'):
-    chapter = st.text_area(st.session_state.chapter)
+    chapter = st.text_area(st.session_state.chapter, help="This is the main body for writing.")
 
     if (st.session_state.models == []):
         st.session_state.models = Writing.Writing().getModels()
