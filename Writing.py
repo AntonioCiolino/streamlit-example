@@ -71,9 +71,9 @@ class Writing:
     def getModels(self):
         models = []
         try:
-            finetunes = openai.FineTune.list()
+            finetunes = openai.Models.list()
             st.write(finetunes)
-            for row in finetunes:
+            for row in finetunes.data:
                 models.append(row.data.id)
 
             return models
