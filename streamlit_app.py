@@ -78,8 +78,5 @@ else:
         st.success("Updated Content")
         st.session_state.chapter = chapter
 
-    content = st_ace()
-    content
-
     content2= st_quill()
     content2
