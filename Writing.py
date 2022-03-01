@@ -3,6 +3,8 @@ import csv
 import random
 import streamlit as st
 
+st.logger.setLevel('DEBUG')
+
 class Writing:
     model = "curie:ft-vtcnp-2022-02-23-00-34-41"
 
