@@ -67,15 +67,15 @@ else:
     if (st.sidebar.button('Run tuned content', help="Calls OpenAI for fine tuned content.")):
         st.write("Starting with content: " + st.session_state.chapter)
         st.session_state.chapter += Writing.Writing().completeModel(st.session_state.chapter, model)
-        st.write("Starting with content: " + st.session_state.chapter)
+        st.write("ended with content: " + st.session_state.chapter)
         chapter = st_quill(value = st.session_state.chapter)
     elif (st.sidebar.button('Run generic content', help="Calls OpenAI for classic DaVinci content.")):
         st.session_state.chapter += Writing.Writing().completeDavinci(st.session_state.chapter)
         chapter = st_quill(value = st.session_state.chapter)
     else:
         chapter = st_quill()
+        if (chapter != st.session_state.chapter):
+            st.success("Updated Content")
+            st.session_state.chapter = chapter
 
-    if (chapter != st.session_state.chapter):
-        st.success("Updated Content")
-        st.session_state.chapter = chapter
 
