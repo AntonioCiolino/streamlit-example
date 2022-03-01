@@ -76,8 +76,8 @@ class Writing:
             models = openai.Model.list()
             st.write(models.data)
             for row in models.data:
-                if (row['status'] == "succeeded"):
-                    models.append(row.fine_tuned_model)
+                models.append(row.id)
+
             return models
         except Exception as oops:
             st.error('ERROR in getModels function: ' + str(oops))
