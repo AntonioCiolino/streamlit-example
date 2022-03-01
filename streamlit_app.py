@@ -1,5 +1,4 @@
 import streamlit as st
-from streamlit_ace import st_ace
 from streamlit_quill import st_quill
 
 import Features
@@ -72,8 +71,7 @@ else:
     if (st.sidebar.button('Run generic content', help="Calls OpenAI for classic DaVinci content.")):
         st.session_state.chapter += Writing.Writing().completeDavinci(st.session_state.chapter)
 
-
-    chapter = st.text_area('Edit this chapter', st.session_state.chapter,  height=500)
+    chapter = st_quill('Edit this chapter', st.session_state.chapter)
     if (chapter != st.session_state.chapter):
         st.success("Updated Content")
         st.session_state.chapter = chapter
