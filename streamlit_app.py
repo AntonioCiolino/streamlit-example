@@ -79,6 +79,4 @@ else:
 
         st.write(st.session_state.chapter)
         st.success("Session state Content: "+ st.session_state.chapter)
-
-
     submit_button = st.form_submit_button(label='Submit')
