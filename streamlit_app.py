@@ -74,6 +74,7 @@ else:
         else:
             chapter = st_quill()
             if (chapter != st.session_state.chapter and chapter != ""):
+                chapter = st_quill(value=st.session_state.chapter)
                 st.session_state.chapter = chapter
 
         st.success("Session state Content: "+ st.session_state.chapter)
