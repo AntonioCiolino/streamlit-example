@@ -40,14 +40,16 @@ class Writing:
         try:
             p = self.features.get_prompt(st.session_state.feat)
             p = "".format(p, prompt)
+            st.info("prompt: {}", p)
             return self.write(p, self.model)
         except Exception as oops:
-            st.error('ERROR in get_query function:', str(oops))
+            st.error('ERROR in get_query function:{}', str(oops))
 
     def get_generic_content(self, prompt):
         try:
             p = self.features.get_prompt(st.session_state.feat)
             p = "".format(p, prompt)
+            st.info("prompt: {}", p)
             return self.write(p, "text-davinci-001")
         except Exception as oops:
             st.error('ERROR in get_query function:', str(oops))
