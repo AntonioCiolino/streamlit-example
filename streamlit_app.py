@@ -41,11 +41,11 @@ if st.sidebar.button('Get random thing'):
     st.info("Added random thing", )
     st.session_state.chapter += "\n" + Tables.Tables().get_random_thing()
 
+st.sidebar.info("Use GPT-3 to Generate content")
 st.session_state.feat = st.sidebar.selectbox('Select a feature', st.session_state.features)
 
 # call openAI
 if (st.session_state.api_key != "" and prompt != ""):
-    st.sidebar.info("Use GPT-3 to Generate content")
     if (st.sidebar.button('Generate tuned content')):
         st.session_state.chapter += Writing.Writing().get_tuned_content(prompt)
     if (st.sidebar.button('Generate generic content')):
