@@ -73,6 +73,7 @@ else:
             st.session_state.chapter += Writing.Writing().completeDavinci(st.session_state.chapter)
 
         chapter = st_quill(key='upper')
+        st.write("quill in session state?: " + st.session_state.upper)
         if (chapter != st.session_state.chapter):
             st.success("Updated Content")
             st_quill(value=st.session_state.chapter, key='lower')
@@ -81,8 +82,3 @@ else:
         st.write(chapter)
         st.write(st.session_state.chapter)
         submit_button = st.form_submit_button(label='Submit')
-
-
-
-
-
