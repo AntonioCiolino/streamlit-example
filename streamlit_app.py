@@ -75,6 +75,3 @@ else:
     if (chapter != st.session_state.chapter):
         st.success("Updated Content")
         st.session_state.chapter = chapter
-
-    content2= st_quill()
-    content2
