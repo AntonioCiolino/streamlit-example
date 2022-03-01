@@ -20,8 +20,7 @@ class Writing:
                and model.split(":")[1].startswith("ft")
             else {"engine": model}
         )
-        st.info(dyn_prompt)
-        st.info(model_param)
+        st.info("prompt: {} model: {}",  dyn_prompt, model_param)
         try:
             response = openai.Completion.create(
                 prompt=dyn_prompt,
@@ -32,8 +31,6 @@ class Writing:
                 presence_penalty=pres_pen,
                 stop=stop,
                 **model_param)
-
-            st.info(response)
             response = response['choices'][0]['text']
             return response
         except Exception as oops:
