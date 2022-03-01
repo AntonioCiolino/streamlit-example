@@ -25,7 +25,7 @@ if 'result' not in st.session_state:
 st.session_state.api_key = st.text_input('enter your api key here', st.session_state.api_key)
 prompt = st.text_input('Prompt to process', ''  )
 
-writing = Writing.Writing()
+# writing = Writing.Writing()
 st.session_state.features = Features.Features.features
 
 st.session_state.sel = st.sidebar.selectbox('Select a table', st.session_state.random_tables.keys())
@@ -39,6 +39,6 @@ chapter = st.text_area('edit this chapter')
 # call openAI
 if (st.session_state.api_key != "" and prompt != ""):
     # st.sidebar.button("Get specific content", on_click=writing.get_query(prompt))
-    tuned = st.sidebar.button('Get tuned content', on_click=writing.get_tuned_content(prompt))
-    generic = st.sidebar.button('Get generic conent', on_click=writing.get_generic_content(prompt))
+    tuned = st.sidebar.button('Get tuned content', on_click=Writing.Writing().get_tuned_content(prompt))
+    generic = st.sidebar.button('Get generic content', on_click=Writing.Writing().get_generic_content(prompt))
 
