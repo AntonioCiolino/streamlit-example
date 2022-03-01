@@ -23,10 +23,10 @@ if 'result' not in st.session_state:
 
 
 st.session_state.api_key = st.text_input('enter your api key here', st.session_state.api_key)
-prompt = st.text_input('Prompt to process', ''  )
+prompt = st.text_input('Prompt to process', '')
 
-# writing = Writing.Writing()
 st.session_state.features = Features.Features.features
+st.session_state.random_tables = Tables.Tables.random_tables
 
 st.session_state.sel = st.sidebar.selectbox('Select a table', st.session_state.random_tables.keys())
 
