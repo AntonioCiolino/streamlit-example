@@ -72,10 +72,10 @@ else:
         elif (st.sidebar.button('Run generic content', help="Calls OpenAI for classic DaVinci content.")):
             st.session_state.chapter += Writing.Writing().completeDavinci(st.session_state.chapter)
 
-        chapter = st_quill()
+        chapter = st_quill(key='upper')
         if (chapter != st.session_state.chapter):
             st.success("Updated Content")
-            st_quill(value=st.session_state.chapter)
+            st_quill(value=st.session_state.chapter, key='lower')
             st.session_state.chapter = chapter
 
         st.write(chapter)
