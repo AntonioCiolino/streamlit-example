@@ -38,6 +38,7 @@ if st.sidebar.button('Get random thing'):
 
 chapter = st.text_area('edit this chapter', st.session_state.chapter,  height=None)
 if (chapter != st.session_state.chapter):
+    st.write("editing chapter")
     st.session_state.chapter = chapter
 
 
