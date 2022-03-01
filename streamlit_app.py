@@ -43,8 +43,10 @@ else:
         st.info("Added random thing", )
         st.session_state.chapter += "\n" + Tables.Tables().get_random_thing()
 
-    st.sidebar.info("Use GPT-3 to Generate content")
-    st.session_state.feat = st.sidebar.selectbox('Select a feature', st.session_state.features)
+    d = (prompt == "")
+
+    st.sidebar.info("Use GPT-3 to Generate content. This will use the text prompt.")
+    st.session_state.feat = st.sidebar.selectbox('Select a feature', st.session_state.features, disabled = d)
 
     # call openAI
     if (prompt != ""):
