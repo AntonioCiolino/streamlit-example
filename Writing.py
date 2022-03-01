@@ -70,7 +70,7 @@ class Writing:
 
     def getModels(self):
         try:
-            models = openai.Engine.list()
-            return models
+            models = openai.FineTune.list()
+            return models.data
         except Exception as oops:
             st.error('ERROR in getModels function: ' + str(oops))
