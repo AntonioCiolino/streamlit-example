@@ -2,8 +2,9 @@ import openai
 import csv
 import random
 import streamlit as st
+import logger
 
-st.logger.setLevel('DEBUG')
+logger.setLevel('DEBUG')
 
 class Writing:
     model = "curie:ft-vtcnp-2022-02-23-00-34-41"
