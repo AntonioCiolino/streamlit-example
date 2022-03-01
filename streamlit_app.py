@@ -5,6 +5,10 @@ import Features
 import Tables
 import Writing
 
+# Title of the page
+#st.title('Streamlit Tutorial')
+st.header("Lorem Ipsum.")
+st.subheader("Lorem Ipsum su dolor emet.")
 
 if 'random_tables' not in st.session_state:
     st.session_state.random_tables = {}
@@ -21,7 +25,6 @@ if 'api_key' not in st.session_state:
 if 'result' not in st.session_state:
     st.session_state.result = ""
 
-
 st.session_state.api_key = st.text_input('enter your api key here', st.session_state.api_key)
 prompt = st.text_input('Prompt to process', '')
 
@@ -30,18 +33,12 @@ st.session_state.random_tables = Tables.Tables().random_tables
 
 st.session_state.sel = st.sidebar.selectbox('Select a table', st.session_state.random_tables.keys())
 
-st.session_state.feat = st.sidebar.selectbox('Select a feature', st.session_state.features)
-
 # detemine button stuff before displaying or loading text boxes
 if st.sidebar.button('Get random thing'):
-    st.write("Getting random thing")
+    st.info("Getting random thing")
     st.session_state.chapter += " " + Tables.Tables().get_random_thing()
 
-chapter = st.text_area('edit this chapter', st.session_state.chapter,  height=None)
-if (chapter != st.session_state.chapter):
-    st.write("editing chapter")
-    st.session_state.chapter = chapter
-
+st.session_state.feat = st.sidebar.selectbox('Select a feature', st.session_state.features)
 
 # call openAI
 if (st.session_state.api_key != "" and prompt != ""):
@@ -50,3 +47,7 @@ if (st.session_state.api_key != "" and prompt != ""):
     if (st.sidebar.button('Get generic content')):
         st.session_state.chapter += Writing.Writing().get_generic_content(prompt)
 
+chapter = st.text_area('edit this chapter', st.session_state.chapter,  height=None)
+if (chapter != st.session_state.chapter):
+    st.success("editing chapter")
+    st.session_state.chapter = chapter

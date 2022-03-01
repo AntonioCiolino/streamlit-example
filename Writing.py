@@ -20,8 +20,8 @@ class Writing:
                and model.split(":")[1].startswith("ft")
             else {"engine": model}
         )
-        st.write(dyn_prompt)
-        st.write(model_param)
+        st.info(dyn_prompt)
+        st.info(model_param)
         try:
             response = openai.Completion.create(
                 prompt=dyn_prompt,
@@ -33,7 +33,7 @@ class Writing:
                 stop=stop,
                 **model_param)
 
-            st.write(response)
+            st.success(response)
             response = response['choices'][0]['text']
             return response
         except Exception as oops:
@@ -42,14 +42,17 @@ class Writing:
     def get_tuned_content(self, prompt):
         try:
             p = self.features.get_prompt(st.session_state.feat)
+            p = "".format(p, prompt)
             return self.write(p, self.model)
         except Exception as oops:
-            st.write('ERROR in get_query function:', str(oops))
+            st.error('ERROR in get_query function:', str(oops))
 
     def get_generic_content(self, prompt):
         try:
-            return self.write(prompt, "text-davinci-001")
+            p = self.features.get_prompt(st.session_state.feat)
+            p = "".format(p, prompt)
+            return self.write(p, "text-davinci-001")
         except Exception as oops:
-            st.write('ERROR in get_query function:', str(oops))
+            st.error('ERROR in get_query function:', str(oops))
 
 

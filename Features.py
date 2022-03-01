@@ -16,9 +16,8 @@ class Features:
 
     def get_prompt(self, item):
         try:
-            st.write(item)
+            st.info(item)
             idx = self.features.index(item)
-            st.write(idx)
             return self.prompts[idx]
         except Exception as oops:
-            st.write('ERROR in get_prompt function:', oops)
+            st.error('ERROR in get_prompt function:', oops)
