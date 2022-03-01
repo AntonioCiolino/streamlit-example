@@ -6,7 +6,7 @@ import Tables
 import Writing
 
 # Title of the page
-st.title('Geezify')
+st.title('OpenAI Geezify')
 # st.header("Lorem Ipsum.")
 st.write("Use this tool to call OpenAI and enhance existing writing, or add additional flair to whatever content you have.")
 
