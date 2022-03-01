@@ -3,9 +3,6 @@ import csv
 import random
 import streamlit as st
 
-import streamlit_app
-
-
 class Writing:
     model = "curie:ft-vtcnp-2022-02-23-00-34-41"
 
