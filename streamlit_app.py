@@ -69,7 +69,7 @@ else:
         #completions vs. tuning.
         if (st.sidebar.button('Run tuned content', help="Calls OpenAI for fine tuned content.")):
             st.session_state.chapter += Writing.Writing().completeModel(st.session_state.chapter, model)
-        elif (st.sidebar.button('Run generic content', help="Calls OpenAI for classic DaVinci content.")):
+        if (st.sidebar.button('Run generic content', help="Calls OpenAI for classic DaVinci content.")):
             st.session_state.chapter += Writing.Writing().completeDavinci(st.session_state.chapter)
 
         #not setting the text allow this to work correctly with a submit button.
@@ -79,6 +79,6 @@ else:
         else:
             st.write("no change in chapter")
 
-        st.write(st.session_state.chapter)
-        st.success("Session state Content: "+ st.session_state.chapter)
+        # st.write(st.session_state.chapter)
+        # st.success("Session state Content: "+ st.session_state.chapter)
         submit_button = st.form_submit_button(label='Submit')
