@@ -32,7 +32,7 @@ with st.expander("Enter your API Key here"):
 if (st.session_state.api_key == ""):
     st.write("You need to enter your API Key to use this tool.")
 else:
-    model = Writing.Writing.getModels()
+    model = Writing.Writing().getModels()
     st.selectbox("Select a model", model)
 
 
