@@ -37,6 +37,8 @@ else:
 
     #with st.form(key='my_form'):
     chapter = st.text_area(st.session_state.chapter, help="This is the main body for writing.")
+    if (chapter != st.session_state.chapter):
+        st.session_state.chapter = chapter
 
     if (st.session_state.models == []):
         st.session_state.models = Writing.Writing().getModels()
