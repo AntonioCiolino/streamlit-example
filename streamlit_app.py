@@ -1,5 +1,5 @@
 import streamlit as st
-import openai
+from streamlit_ace import st_ace
 
 import Features
 import Tables
@@ -76,3 +76,6 @@ else:
     if (chapter != st.session_state.chapter):
         st.success("Updated Content")
         st.session_state.chapter = chapter
+
+    content = st_ace()
+    content
