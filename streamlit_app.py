@@ -51,13 +51,13 @@ if (st.session_state.api_key != "" and prompt != ""):
     if (st.sidebar.button('Generate generic content')):
         st.session_state.chapter += Writing.Writing().get_generic_content(prompt)
 
-    st.sidebar.info("Use GPT-3 to Complete content")
+    st.sidebar.info("Use GPT-3 to Complete content. This will run from the chapter content, not the prompt!")
 
     #completions vs. tuning.
     if (st.sidebar.button('Run tuned content')):
-        st.session_state.chapter += prompt + " " + Writing.Writing().completeModel(st.session_state.chapter )
+        st.session_state.chapter += Writing.Writing().completeModel(st.session_state.chapter )
     if (st.sidebar.button('Run generic content')):
-        st.session_state.chapter += prompt + " " + Writing.Writing().completeDavinci(st.session_state.chapter )
+        st.session_state.chapter += Writing.Writing().completeDavinci(st.session_state.chapter )
 
 
 chapter = st.text_area('edit this chapter', st.session_state.chapter,  height=500)
