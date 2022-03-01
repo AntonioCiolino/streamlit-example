@@ -74,7 +74,7 @@ class Writing:
             finetunes = openai.FineTune.list()
             st.write(finetunes)
             for row in finetunes.data:
-                models.append(row.data.id)
+                models.append(row.fine_tuned_model)
 
             return models
         except Exception as oops:
