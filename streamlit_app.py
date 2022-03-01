@@ -64,6 +64,7 @@ else:
 
     st.sidebar.info("Use the content box to enhance chapter content. Note that this takes the whole chapter; we do not handle highlighting and custom selection yet.")
     chapter = st_quill()
+    st.write(chapter.readOnly)
     if (chapter != st.session_state.chapter):
         st.success("Updated Content")
         st.session_state.chapter = chapter
