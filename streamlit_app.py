@@ -23,7 +23,7 @@ if 'result' not in st.session_state:
 
 
 st.session_state.api_key = st.text_input('enter your api key here', st.session_state.api_key)
-prompt = st.text_input('Prompt to process', prompt)
+prompt = st.text_input('Prompt to process', ''  )
 
 writing = Writing.Writing()
 d = Tables.Tables()
