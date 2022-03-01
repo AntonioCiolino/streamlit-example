@@ -5,7 +5,7 @@ import streamlit as st
 import Features
 
 class Writing:
-    model = "curie:ft-vtcnp-2022-02-23-00-34-41"
+
     features = Features.Features()
 
     def __init__(self):
@@ -37,12 +37,12 @@ class Writing:
             except Exception as oops:
                 return "Completion Error: " + str(oops)
 
-    def get_tuned_content(self, prompt):
+    def get_tuned_content(self, prompt, model):
         try:
             p = self.features.get_prompt(st.session_state.feat)
             p = p.format(prompt)
             st.write(p)
-            return self.write(p, self.model)
+            return self.write(p, model)
         except Exception as oops:
             st.error('ERROR in get_tuned function: ' + str(oops))
 
@@ -61,20 +61,23 @@ class Writing:
         except Exception as oops:
             st.error('ERROR in get_generic function: ' + str(oops))
 
-    def completeModel(self, prompt):
+    def completeModel(self, prompt, model):
         try:
-            return self.write(prompt, self.model)
+            return self.write(prompt, model)
         except Exception as oops:
             st.error('ERROR in get_generic function: ' + str(oops))
 
 
     def getModels(self):
         models = []
+        models.append("text-davinci-001")
+        models.append("text-curie-001")
         try:
             finetunes = openai.FineTune.list()
             st.write(finetunes)
             for row in finetunes.data:
-                models.append(row.fine_tuned_model)
+                if (row.deleted == False):
+                    models.append(row.fine_tuned_model)
 
             return models
         except Exception as oops:

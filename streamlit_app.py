@@ -35,7 +35,6 @@ else:
     model = Writing.Writing().getModels()
     st.selectbox("Select a model", model)
 
-
     prompt = st.text_input('Prompt to process', '', help="Enter a prompt to process.")
 
     st.session_state.features = Features.Features.features
@@ -56,18 +55,18 @@ else:
                                                  help="Requests data from GPT-3 in the selected style.")
 
     if (st.sidebar.button('Generate tuned content', help="Calls OpenAI for fine tuned content based on the prompt.", disabled = d)):
-        st.session_state.chapter += Writing.Writing().get_tuned_content(prompt)
+        st.session_state.chapter += Writing.Writing().get_tuned_content(prompt, model)
     if (st.sidebar.button('Generate generic content', help="Calls OpenAI for Davinci content based no the prompt.", disabled = d)):
-        st.session_state.chapter += Writing.Writing().get_generic_content(prompt)
+        st.session_state.chapter += Writing.Writing().get_generic_content(prompt, model)
 
 
     st.sidebar.info("Use GPT-3 to Complete content. This will run from the chapter content, not the prompt!")
 
     #completions vs. tuning.
     if (st.sidebar.button('Run tuned content', help="Calls OpenAI for fine tuned content.")):
-        st.session_state.chapter += Writing.Writing().completeModel(st.session_state.chapter )
+        st.session_state.chapter += Writing.Writing().completeModel(st.session_state.chapter, model)
     if (st.sidebar.button('Run generic content', help="Calls OpenAI for classic DaVinci content.")):
-        st.session_state.chapter += Writing.Writing().completeDavinci(st.session_state.chapter )
+        st.session_state.chapter += Writing.Writing().completeDavinci(st.session_state.chapter, model)
 
 
     chapter = st.text_area('Edit this chapter', st.session_state.chapter,  height=500)
