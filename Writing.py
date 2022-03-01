@@ -77,7 +77,7 @@ class Writing:
             st.write(model_list.data)
             for row in model_list.data:
                 if (row["owned_by"] != "openai" and row["owned_by"] != "system"):
-                models.append(row.id)
+                    models.append(row.id)
 
             return models
         except Exception as oops:
