@@ -10,8 +10,6 @@ class Writing:
         openai.api_key=st.session_state.api_key
 
     def write(self, prompt, model, temp=0.73, top_p=1.0, tokens=500, freq_pen=1.73, pres_pen=0.43, stop=["END", "Scene:", "[Scene"]):
-        st.write(prompt)
-        st.write(model)
 
         # fine-tuned models requires model parameter, whereas other models require engine parameter
         model_param = (
@@ -20,6 +18,7 @@ class Writing:
                and model.split(":")[1].startswith("ft")
             else {"engine": model}
         )
+        st.write(prompt)
         st.write(model_param)
         try:
             response = openai.Completion.create(
