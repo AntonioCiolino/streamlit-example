@@ -68,3 +68,9 @@ class Writing:
             st.error('ERROR in get_generic function: ' + str(oops))
 
 
+    def getModels(self):
+        try:
+            models = openai.Engine.list()
+            return models
+        except Exception as oops:
+            st.error('ERROR in getModels function: ' + str(oops))

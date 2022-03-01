@@ -25,12 +25,17 @@ if 'api_key' not in st.session_state:
 if 'result' not in st.session_state:
     st.session_state.result = ""
 
+
 with st.expander("Enter your API Key here"):
     st.session_state.api_key = st.text_input('API Key', st.session_state.api_key)
 
 if (st.session_state.api_key == ""):
     st.write("You need to enter your API Key to use this tool.")
 else:
+    model = Writing.Writing.getModels()
+    st.selectbox("Select a model", model)
+
+
     prompt = st.text_input('Prompt to process', '', help="Enter a prompt to process.")
 
     st.session_state.features = Features.Features.features
