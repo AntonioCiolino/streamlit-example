@@ -33,7 +33,7 @@ class Writing:
                 stop=stop,
                 **model_param)
 
-            st.success(response)
+            st.info(response)
             response = response['choices'][0]['text']
             return response
         except Exception as oops:
