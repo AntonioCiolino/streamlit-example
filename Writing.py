@@ -30,8 +30,9 @@ class Writing:
                 presence_penalty=pres_pen,
                 stop=stop,
                 **model_param)
-            response = response['choices'][0]['text']
             st.write("response: " + response)
+
+            response = response['choices'][0]['text']
             return response
         except Exception as oops:
             return "Completion Error: " + str(oops)
