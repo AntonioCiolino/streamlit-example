@@ -74,6 +74,7 @@ else:
         st.session_state.chapter += Writing.Writing().completeDavinci(st.session_state.chapter)
         chapter = st_quill(st.session_state.chapter)
     else:
+        st.write("updating quill content")
         chapter = st_quill()
         if (chapter != st.session_state.chapter):
             st.success("Updated Content")
