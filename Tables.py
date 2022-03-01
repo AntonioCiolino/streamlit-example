@@ -18,6 +18,6 @@ class Tables:
 
     def get_random_thing(self):
         try:
-            st.session_state.chapter += " " + random.choice(st.session_state.random_tables[st.session_state.sel])
+            return random.choice(st.session_state.random_tables[st.session_state.sel])
         except Exception as oops:
             st.write('ERROR in get_random_thing function:', oops)

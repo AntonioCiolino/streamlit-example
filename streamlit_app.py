@@ -32,13 +32,14 @@ st.session_state.sel = st.sidebar.selectbox('Select a table', st.session_state.r
 
 st.session_state.feat = st.sidebar.selectbox('Select a feature', st.session_state.features)
 
+if st.sidebar.button('Ge trandom thing'):
+    st.write("Getting random thing")
+    st.session_state.chapter += " " + Tables.Tables().get_random_thing()
+
 chapter = st.text_area('edit this chapter', st.session_state.chapter,  height=None)
 if (chapter != st.session_state.chapter):
     st.session_state.chapter = chapter
 
-if st.sidebar.button('Get random thing'):
-    st.write("Getting random thing")
-    Tables.Tables().get_random_thing()
 
 # call openAI
 if (st.session_state.api_key != "" and prompt != ""):
