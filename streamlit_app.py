@@ -24,8 +24,9 @@ if 'api_key' not in st.session_state:
     st.session_state.api_key = ""
 if 'result' not in st.session_state:
     st.session_state.result = ""
+
 with st.expander("Enter your API Key here"):
-    st.session_state.api_key = st.sidebar.text_input('enter your api key here', st.session_state.api_key)
+    st.session_state.api_key = st.text_input('enter your api key here', st.session_state.api_key)
     prompt = st.text_input('Prompt to process', '')
 
 st.session_state.features = Features.Features.features
