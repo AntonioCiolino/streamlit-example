@@ -22,8 +22,6 @@ class Writing:
         )
         st.write(model_param)
         try:
-
-
             response = openai.Completion.create(
                 prompt=prompt,
                 temperature=temp,
@@ -34,6 +32,7 @@ class Writing:
                 stop=stop,
                 **model_param)
 
+            st.write(response)
             response = response['choices'][0]['text']
             return response
         except Exception as oops:
