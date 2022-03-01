@@ -43,17 +43,16 @@ else:
         st.info("Added random thing", )
         st.session_state.chapter += "\n" + Tables.Tables().get_random_thing()
 
+    # for the prompt, if the prompt is blank, disable the controls, but still render.
     d = (prompt == "")
-
-    st.sidebar.info("Use GPT-3 to Generate content. This will use the text prompt.")
+    st.sidebar.info("Use GPT-3 to Generate content. This will use the \"Prompt to process\" box.")
     st.session_state.feat = st.sidebar.selectbox('Select a feature', st.session_state.features, disabled = d)
 
-    # call openAI
-    if (prompt != ""):
-        if (st.sidebar.button('Generate tuned content', help="Calls OpenAI for fine tuned content based on the prompt.")):
-            st.session_state.chapter += Writing.Writing().get_tuned_content(prompt)
-        if (st.sidebar.button('Generate generic content', help="Calls OpenAI for Davinci content based no the prompt.")):
-            st.session_state.chapter += Writing.Writing().get_generic_content(prompt)
+    if (st.sidebar.button('Generate tuned content', help="Calls OpenAI for fine tuned content based on the prompt.", disabled = d)):
+        st.session_state.chapter += Writing.Writing().get_tuned_content(prompt)
+    if (st.sidebar.button('Generate generic content', help="Calls OpenAI for Davinci content based no the prompt.", disabled = d)):
+        st.session_state.chapter += Writing.Writing().get_generic_content(prompt)
+
 
     st.sidebar.info("Use GPT-3 to Complete content. This will run from the chapter content, not the prompt!")
 
