@@ -6,9 +6,9 @@ class Features:
     def __init__(self, **kwargs):
         features = []
         with open('features.csv') as data_file:
-            data = csv.reader(data_file, delimiter='\t')
+            data = csv.reader(data_file, delimiter=',')
             for row in data:
-                features.append(row[0] + "|" + row[1])
+                features.append(str(row[0]) + "|" + str(row[1]))
 
         st.session_state.features = features
 
