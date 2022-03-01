@@ -2,10 +2,6 @@ import openai
 import csv
 import random
 import streamlit as st
-import logging
-
-logging.basicConfig(filename='kivyUI.log', level=logging.DEBUG, filemode="w")
-logging.debug('Debugging started.')
 
 class Writing:
     model = "curie:ft-vtcnp-2022-02-23-00-34-41"
