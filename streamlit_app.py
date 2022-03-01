@@ -73,7 +73,7 @@ else:
             st.session_state.chapter += Writing.Writing().completeDavinci(st.session_state.chapter)
 
         #not setting the text allow this to work correctly with a submit button.
-        chapter = st.text_area(label="edit your chapter", value=st.session_state.chapter,help="This is the main body for writing.")
+        chapter = st.text_area(label="edit your chapter", value=st.session_state.chapter,help="This is the main body for writing.", height=500)
         if (chapter != st.session_state.chapter):
             st.session_state.chapter = chapter
         else:
