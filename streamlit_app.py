@@ -37,6 +37,7 @@ if (chapter != st.session_state.chapter):
     st.session_state.chapter = chapter
 
 if st.sidebar.button('Get random thing'):
+    st.write("Getting random thing")
     Tables.Tables().get_random_thing()
 
 # call openAI
