@@ -6,7 +6,7 @@ import Tables
 import Writing
 
 def update_content():
-    st.success("on_change called")
+    st.balloons()
 
 
 # Title of the page
