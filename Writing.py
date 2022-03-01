@@ -21,7 +21,7 @@ class Writing:
                    and model.split(":")[1].startswith("ft")
                 else {"engine": model}
             )
-            st.info("prompt: {} model: {}".format(dyn_prompt, model_param))
+
             try:
                 response = openai.Completion.create(
                     prompt=dyn_prompt,
