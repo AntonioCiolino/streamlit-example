@@ -34,13 +34,12 @@ prompt = st.text_input('Prompt to process', '')
 st.session_state.features = Features.Features.features
 st.session_state.random_tables = Tables.Tables().random_tables
 
-with st.expander("Get a random string from the tables."):
-    st.session_state.sel = st.sidebar.selectbox('Create random table content', st.session_state.random_tables.keys())
+st.session_state.sel = st.sidebar.selectbox('Create random table content', st.session_state.random_tables.keys())
 
 # detemine button stuff before displaying or loading text boxes
 if st.sidebar.button('Get random thing'):
-    st.info("Getting random thing")
-    st.session_state.chapter += " " + Tables.Tables().get_random_thing()
+    st.info("Added random thing", )
+    st.session_state.chapter += "\n" + Tables.Tables().get_random_thing()
 
 st.session_state.feat = st.sidebar.selectbox('Select a feature', st.session_state.features)
 
