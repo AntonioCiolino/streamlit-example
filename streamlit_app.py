@@ -36,7 +36,6 @@ if (st.session_state.api_key == ""):
 else:
 
     with st.form(key='my_form'):
-
         if (st.session_state.models == []):
             st.session_state.models = Writing.Writing().getModels()
         model = st.selectbox("Select a model", st.session_state.models)
@@ -79,4 +78,4 @@ else:
 
         st.write(st.session_state.chapter)
         st.success("Session state Content: "+ st.session_state.chapter)
-    submit_button = st.form_submit_button(label='Submit')
+        submit_button = st.form_submit_button(label='Submit')
