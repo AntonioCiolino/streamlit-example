@@ -32,7 +32,7 @@ class Writing:
                 frequency_penalty=freq_pen,
                 presence_penalty=pres_pen,
                 stop=stop,
-                **model_param)
+                *model_param)
 
             response = response['choices'][0]['text']
             return response
