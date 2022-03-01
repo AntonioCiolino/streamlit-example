@@ -73,9 +73,10 @@ class Writing:
         models.append("text-davinci-001")
         models.append("text-curie-001")
         try:
-            models = openai.Model.list()
-            st.write(models.data)
-            for row in models.data:
+            model_list = openai.Model.list()
+            st.write(model_list.data)
+            for row in model_list.data:
+                if (row["owned_by"] != "openai" and row["owned_by"] != "system"):
                 models.append(row.id)
 
             return models
