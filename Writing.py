@@ -10,7 +10,7 @@ class Writing:
         openai.api_key=st.session_state.api_key
 
     def write(prompt, model, temp=0.73, top_p=1.0, tokens=500, freq_pen=1.73, pres_pen=0.43, stop=["END", "Scene:", "[Scene"]):
-        # try:
+        try:
             st.write(model)
             # fine-tuned models requires model parameter, whereas other models require engine parameter
             model_param = (
@@ -32,15 +32,15 @@ class Writing:
                 **model_param)
             response = response['choices'][0]['text']
             return response
-        # except Exception as oops:
-        #     return "Error: " + str(oops)
+        except Exception as oops:
+            return "Error: " + str(oops)
 
     def get_query(self, prompt):
-        try:
+        # try:
             result = self.write(prompt, self.model)
             st.write("*** got back " + result)
             st.session_state.chapter += str(result)
             st.write(st.session_state.chapter)  # this is the text that is displayed on the page
-        except Exception as oops:
-            st.write('ERROR in get_query function:', str(oops))
+        # except Exception as oops:
+        #     st.write('ERROR in get_query function:', str(oops))
 
