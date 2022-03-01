@@ -31,7 +31,6 @@ with st.expander("Enter your API Key here"):
 if (st.session_state.api_key == ""):
     st.write("You need to enter your API Key to use this tool.")
 else:
-
     prompt = st.text_input('Prompt to process', '')
 
     st.session_state.features = Features.Features.features
@@ -48,19 +47,19 @@ else:
     st.session_state.feat = st.sidebar.selectbox('Select a feature', st.session_state.features)
 
     # call openAI
-    if (st.session_state.api_key != "" and prompt != ""):
+    if (prompt != ""):
         if (st.sidebar.button('Generate tuned content', help="Calls OpenAI for fine tuned content based on the prompt.")):
             st.session_state.chapter += Writing.Writing().get_tuned_content(prompt)
         if (st.sidebar.button('Generate generic content', help="Calls OpenAI for Davinci content based no the prompt.")):
             st.session_state.chapter += Writing.Writing().get_generic_content(prompt)
 
-        st.sidebar.info("Use GPT-3 to Complete content. This will run from the chapter content, not the prompt!")
+    st.sidebar.info("Use GPT-3 to Complete content. This will run from the chapter content, not the prompt!")
 
-        #completions vs. tuning.
-        if (st.sidebar.button('Run tuned content', help="Calls OpenAI for fine tuned content.")):
-            st.session_state.chapter += Writing.Writing().completeModel(st.session_state.chapter )
-        if (st.sidebar.button('Run generic content', help="Calls OpenAI for classic DaVinci content.")):
-            st.session_state.chapter += Writing.Writing().completeDavinci(st.session_state.chapter )
+    #completions vs. tuning.
+    if (st.sidebar.button('Run tuned content', help="Calls OpenAI for fine tuned content.")):
+        st.session_state.chapter += Writing.Writing().completeModel(st.session_state.chapter )
+    if (st.sidebar.button('Run generic content', help="Calls OpenAI for classic DaVinci content.")):
+        st.session_state.chapter += Writing.Writing().completeDavinci(st.session_state.chapter )
 
 
     chapter = st.text_area('Edit this chapter', st.session_state.chapter,  height=500)
