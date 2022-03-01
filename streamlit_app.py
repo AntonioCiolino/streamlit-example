@@ -26,6 +26,8 @@ if 'result' not in st.session_state:
     st.session_state.result = ""
 if 'models' not in st.session_state:
     st.session_state.models = []
+if 'upper' not in st.session_state:
+    st.session_state.upper = ""
 
 
 with st.expander("Enter your API Key here"):
