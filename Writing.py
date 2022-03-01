@@ -73,9 +73,9 @@ class Writing:
         models.append("text-davinci-001")
         models.append("text-curie-001")
         try:
-            finetunes = openai.FineTune.list()
-            st.write(finetunes.data)
-            for row in finetunes.data:
+            finetunes = openai.Model.list()
+            st.write(models.data)
+            for row in models.data:
                 if (row['status'] == "succeeded"):
                     models.append(row.fine_tuned_model)
             return models
