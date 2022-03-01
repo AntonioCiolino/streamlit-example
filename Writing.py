@@ -71,8 +71,8 @@ class Writing:
     def getModels(self):
         models = []
         try:
-            models = openai.FineTune.list()
-            for row in models:
+            finetunes = openai.FineTune.list()
+            for row in finetunes:
                 models.append(row.data.id)
 
             return models
