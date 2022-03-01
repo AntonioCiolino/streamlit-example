@@ -6,7 +6,7 @@ import Tables
 import Writing
 
 def update_content(args):
-    pass
+    st.success(args)
 
 
 # Title of the page
