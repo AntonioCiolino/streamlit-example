@@ -29,13 +29,15 @@ prompt = st.text_input('Prompt to process', ''  )
 st.session_state.features = Features.Features.features
 
 st.session_state.sel = st.sidebar.selectbox('Select a table', st.session_state.random_tables.keys())
-thing = st.sidebar.button('Get random thing', on_click=Tables.Tables().get_random_thing())
 
 st.session_state.feat = st.sidebar.selectbox('Select a feature', st.session_state.features)
 
 chapter = st.text_area('edit this chapter', st.session_state.chapter,  height=None)
 if (chapter != st.session_state.chapter):
     st.session_state.chapter = chapter
+
+if st.sidebar.button('Get random thing'):
+    Tables.Tables().get_random_thing()
 
 # call openAI
 if (st.session_state.api_key != "" and prompt != ""):
