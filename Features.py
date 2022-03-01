@@ -19,4 +19,4 @@ class Features:
             idx = self.features.index(item)
             return self.prompts[idx]
         except Exception as oops:
-            st.error('ERROR in get_prompt function:', oops)
+            st.error('ERROR in get_prompt function:' + oops)

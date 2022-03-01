@@ -20,7 +20,7 @@ class Writing:
                and model.split(":")[1].startswith("ft")
             else {"engine": model}
         )
-        st.info("prompt: {} model: {}",  dyn_prompt, model_param)
+        st.info("prompt: {} model: {}".format(dyn_prompt, model_param))
         try:
             response = openai.Completion.create(
                 prompt=dyn_prompt,
@@ -43,7 +43,7 @@ class Writing:
             st.write(p)
             return self.write(p, self.model)
         except Exception as oops:
-            st.error('ERROR in get_query function: ' + str(oops))
+            st.error('ERROR in get_tuned function: ' + str(oops))
 
     def get_generic_content(self, prompt):
         try:
@@ -52,6 +52,6 @@ class Writing:
             st.write( p)
             return self.write(p, "text-davinci-001")
         except Exception as oops:
-            st.error('ERROR in get_query function: ' + str(oops))
+            st.error('ERROR in get_generic function: ' + str(oops))
 
 
