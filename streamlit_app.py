@@ -46,6 +46,12 @@ if (st.session_state.api_key != "" and prompt != ""):
         st.session_state.chapter += Writing.Writing().get_tuned_content(prompt)
     if (st.sidebar.button('Get generic content')):
         st.session_state.chapter += Writing.Writing().get_generic_content(prompt)
+    #completions vs. tuning.
+    if (st.sidebar.button('Complete tuned content')):
+        st.session_state.chapter += Writing.Writing().completeModel(prompt)
+    if (st.sidebar.button('Complete generic content')):
+        st.session_state.chapter += Writing.Writing().completeDavinci(prompt)
+
 
 chapter = st.text_area('edit this chapter', st.session_state.chapter,  height=500)
 if (chapter != st.session_state.chapter):

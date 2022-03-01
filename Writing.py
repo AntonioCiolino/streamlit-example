@@ -54,4 +54,16 @@ class Writing:
         except Exception as oops:
             st.error('ERROR in get_generic function: ' + str(oops))
 
+    def completeDavinci(self, prompt):
+        try:
+            return self.write(prompt, "text-davinci-001")
+        except Exception as oops:
+            st.error('ERROR in get_generic function: ' + str(oops))
+
+    def completeModel(self, prompt):
+        try:
+            return self.write(prompt, self.model)
+        except Exception as oops:
+            st.error('ERROR in get_generic function: ' + str(oops))
+
 
