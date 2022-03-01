@@ -3,6 +3,7 @@ import random
 import streamlit as st
 
 class Tables:
+    random_tables = {}
     def __init__(self, **kwargs):
         tables = {}
         with open('tables1e.csv') as data_file:
@@ -13,7 +14,7 @@ class Tables:
                     tables[current_table] = []
                 else:
                     tables[current_table].append(row[1])
-        st.session_state.random_tables = tables
+        self.random_tables = tables
 
     def get_random_thing(self):
         try:
