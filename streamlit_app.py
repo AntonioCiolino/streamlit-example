@@ -75,6 +75,8 @@ else:
         chapter = st.text_area(label="edit your chapter", value=st.session_state.chapter, help="This is the main body for writing.")
         if (chapter != st.session_state.chapter):
             st.session_state.chapter = chapter
+        else:
+            st.write("no change in chapter")
 
         st.write(st.session_state.chapter)
         st.success("Session state Content: "+ st.session_state.chapter)
