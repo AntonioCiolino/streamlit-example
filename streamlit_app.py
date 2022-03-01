@@ -28,7 +28,7 @@ prompt = st.text_input('Prompt to process', ''  )
 writing = Writing.Writing()
 d = Tables.Tables()
 f = Features.Features()
-if (st.session_state.features == ""):
+if (st.session_state.features == None):
     st.session_state.features = f.features
 
 st.session_state.sel = st.sidebar.selectbox('Select a table', st.session_state.random_tables.keys())
