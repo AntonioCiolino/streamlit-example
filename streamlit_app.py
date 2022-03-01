@@ -1,5 +1,6 @@
 import streamlit as st
 from streamlit_ace import st_ace
+from streamlit_quill import st_quill
 
 import Features
 import Tables
@@ -79,3 +80,6 @@ else:
 
     content = st_ace()
     content
+
+    content2= st_quill()
+    content2
