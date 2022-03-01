@@ -60,7 +60,7 @@ else:
     if (st.sidebar.button('Generate tuned content', help="Calls OpenAI for fine tuned content based on the prompt.", disabled = d)):
         st.session_state.chapter += Writing.Writing().get_tuned_content(prompt, model)
     if (st.sidebar.button('Generate generic content', help="Calls OpenAI for Davinci content based no the prompt.", disabled = d)):
-        st.session_state.chapter += Writing.Writing().get_generic_content(prompt, model)
+        st.session_state.chapter += Writing.Writing().get_generic_content(prompt)
 
 
     st.sidebar.info("Use GPT-3 to Complete content. This will run from the chapter content, not the prompt!")
