@@ -65,10 +65,10 @@ else:
     st.sidebar.info("Use the content box to enhance chapter content. Note that this takes the whole chapter; we do not handle highlighting and custom selection yet.")
     chapter = st_quill()
     st.write(chapter)
-    st.write(st.session_state.chapter)
     if (chapter != st.session_state.chapter):
         st.success("Updated Content")
         st.session_state.chapter = chapter
+        st.write(st.session_state.chapter)
 
     #completions vs. tuning.
     if (st.sidebar.button('Run tuned content', help="Calls OpenAI for fine tuned content.")):
