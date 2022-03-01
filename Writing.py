@@ -20,6 +20,8 @@ class Writing:
                    and model.split(":")[1].startswith("ft")
                 else {"engine": model}
             )
+            st.write("response: " + model_param)
+
 
             response = openai.Completion.create(
                 prompt=prompt,
@@ -30,7 +32,6 @@ class Writing:
                 presence_penalty=pres_pen,
                 stop=stop,
                 **model_param)
-            st.write("response: " + model_param)
 
             response = response['choices'][0]['text']
             return response
