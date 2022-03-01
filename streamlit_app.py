@@ -32,7 +32,7 @@ st.session_state.sel = st.sidebar.selectbox('Select a table', st.session_state.r
 
 st.session_state.feat = st.sidebar.selectbox('Select a feature', st.session_state.features)
 
-if st.sidebar.button('Ge trandom thing'):
+if st.sidebar.button('Get random thing'):
     st.write("Getting random thing")
     st.session_state.chapter += " " + Tables.Tables().get_random_thing()
 
