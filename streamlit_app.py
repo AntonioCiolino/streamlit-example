@@ -5,8 +5,9 @@ import Features
 import Tables
 import Writing
 
+# check to see if this is making a difference.
 def update_content(args):
-    st.success(args)
+    pass
 
 
 # Title of the page
@@ -86,5 +87,5 @@ else:
     if (cpost != st.session_state.chapter):
         st.session_state.chapter = cpost
 
-    st.success("Session state Content: "+ st.session_state.chapter)
+    # st.success("Session state Content: "+ st.session_state.chapter)
         #submit_button = st.form_submit_button(label='Submit')
