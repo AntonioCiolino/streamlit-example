@@ -12,7 +12,6 @@ def update_content(args):
 
 # Title of the page
 st.title('WordPlay')
-# st.header("Lorem Ipsum.")
 st.write("""
 an app that helps users come up with new and interesting words for their writing projects.")
  DO NOT DEPEND ON THIS TOOL TO KEEP YOUR STORY. It can reset at any time.
@@ -90,7 +89,7 @@ else:
 
     #not setting the text allow this to work correctly with a submit button.
     st.text_area(label="Your chapter",
-                 help="The story that you are creating is here. You can add content to it by clicking the buttons above.")
+                 help="The story that you are creating is here. You can add content to it by clicking the buttons above.",
                  height=500,
                  key="chapter",
                  on_change=update_content, args=(st.session_state.chapter, ))
