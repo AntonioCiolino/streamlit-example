@@ -12,8 +12,8 @@ def update_content(args):
 
 # Title of the page
 st.title('WordPlay')
-st.caption("An app that helps users come up with new and interesting words for their writing projects.",
-           help="DO NOT DEPEND ON THIS TOOL TO KEEP YOUR STORY. It depends on session state, and it can reset at any time.")
+st.caption("An app that helps users come up with new and interesting words for their writing projects.")
+st.caption("DO NOT DEPEND ON THIS TOOL TO KEEP YOUR STORY. It depends on session state, and it can reset at any time.")
 
 if 'random_tables' not in st.session_state:
     st.session_state.random_tables = {}
