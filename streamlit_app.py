@@ -32,7 +32,7 @@ if 'models' not in st.session_state:
 if 'chapter' not in st.session_state:
     st.session_state.chapter = ""
 
-st.write("Session Content State:", st.session_state.chapter)
+st.write("Session Content State 1:", st.session_state.chapter)
 
 with st.expander("Enter your API Key here"):
     st.session_state.api_key = st.text_input('API Key', st.session_state.api_key)
@@ -70,6 +70,8 @@ else:
     elif (st.sidebar.button('Generate generic content', help="Calls OpenAI for Davinci content based no the prompt.", disabled = d)):
         st.session_state.chapter += Writing.Writing().get_generic_content(prompt)
 
+    st.write("Session Content State 2:", st.session_state.chapter)
+
 
     st.sidebar.info("Use the content box to enhance chapter content. Note that this takes the whole chapter; we do not handle highlighting and custom selection yet.")
     #completions vs. tuning.
@@ -77,6 +79,8 @@ else:
         st.session_state.chapter += Writing.Writing().completeModel(st.session_state.chapter, model)
     if (st.sidebar.button('Run generic content', help="Calls OpenAI for classic DaVinci content.")):
         st.session_state.chapter += Writing.Writing().completeDavinci(st.session_state.chapter)
+
+    st.write("Session Content State 3:", st.session_state.chapter)
 
     #not setting the text allow this to work correctly with a submit button.
     cpost = st.text_area(label="edit your chapter",
@@ -88,5 +92,5 @@ else:
     # if (cpost != st.session_state.chapter):
     #     st.session_state.chapter = cpost
 
-    st.success("Session state Content: "+ st.session_state.chapter)
+    st.success("Session state Content 4: "+ st.session_state.chapter)
         #submit_button = st.form_submit_button(label='Submit')
