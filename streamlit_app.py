@@ -40,7 +40,7 @@ with st.expander("Enter your API Key"):
     st.session_state.api_key = st.text_input('API Key', st.session_state.api_key)
 
 if (st.session_state.api_key == ""):
-    st.write("You need to enter your API Key to use this tool.")
+    st.write("You need to enter your API Key to use this app.")
 else:
 
     st.session_state.features = Features.Features.features
@@ -81,11 +81,11 @@ else:
         col1, col2 = st.columns(2)
         with col1:
             if (st.button('Run selected model content', help="Calls OpenAI for model (fine tuned) content.")):
-                st.success("Sent to OpenAI: "+ st.session_state.chapter)
+                # st.success("Sent to OpenAI: "+ st.session_state.chapter)
                 st.session_state.chapter += Writing.Writing().completeModel(st.session_state.chapter, model)
         with col2:
             if (st.button('Run Davinci content', help="Calls OpenAI for classic DaVinci content.")):
-                st.success("Sent to OpenAI: "+ st.session_state.chapter)
+                # st.success("Sent to OpenAI: "+ st.session_state.chapter)
                 st.session_state.chapter += Writing.Writing().completeDavinci(st.session_state.chapter)
 
     #not setting the text allow this to work correctly with a submit button.
