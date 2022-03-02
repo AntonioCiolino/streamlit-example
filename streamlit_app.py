@@ -48,7 +48,8 @@ else:
     if (st.session_state.models == []):
         st.session_state.models = Writing.Writing().getModels()
 
-    with st.expander("Select a Generator: choose which model that OpenAI will use to generate your content."):
+    with st.expander("Select a Generator"):
+        st.caption("choose which model that OpenAI will use to generate your content. Choose DaVinci, Curie, or your own fine tuned models.")
         model = st.selectbox("Select a model", st.session_state.models)
 
     with st.expander("Optional prompt: generate a style based on a specific sentence, phrase or idea."):
@@ -61,11 +62,11 @@ else:
 
         if (st.button('Generate tuned content', help="Calls OpenAI for fine tuned content based on the prompt.", disabled = d)):
             st.session_state.chapter += Writing.Writing().get_tuned_content(prompt, model)
-        elif (st.button('Generate generic content', help="Calls OpenAI for Davinci content based no the prompt.", disabled = d)):
+        elif (st.button('Generate generic content', help="(Shortcut) Calls OpenAI for Davinci content based no the prompt.", disabled = d)):
             st.session_state.chapter += Writing.Writing().get_generic_content(prompt)
 
-    with st.expander("Inject random data"):
-        st.info("Appends a random thing from the collection of options into the story area. This can be used to spark ideas for yourself or the generator.")
+    with st.expander("Tool: Inject random data"):
+        st.caption("Appends a random thing from the collection of options into the story area. This can be used to spark ideas for yourself or the generator.")
         st.session_state.sel = st.selectbox('Select grouping of content', st.session_state.random_tables.keys(),
                                             help="Select a random table to generate content from.")
 
@@ -88,7 +89,7 @@ else:
             # st.success("Sent to OpenAI: "+ st.session_state.chapter)
             st.session_state.chapter += Writing.Writing().completeModel(st.session_state.chapter, model)
     with col2:
-        if (st.button('Get Davinci content', help="Sends the story to OpenAI for additional DaVinci (GPT-3) content.")):
+        if (st.button('Get Davinci content', help="(Shortcut) Sends the story to OpenAI for additional DaVinci (GPT-3) content.")):
             # st.success("Sent to OpenAI: "+ st.session_state.chapter)
             st.session_state.chapter += Writing.Writing().completeDavinci(st.session_state.chapter)
 
