@@ -10,9 +10,9 @@ def update_content(args):
 
 
 # Title of the page
-st.title('OpenAI Geezify')
+st.title('WordPlay')
 # st.header("Lorem Ipsum.")
-st.write("Use this tool to call OpenAI and enhance existing writing, or add additional flair to whatever content you have.")
+st.write("an app that helps users come up with new and interesting words for their writing projects.")
 
 if 'random_tables' not in st.session_state:
     st.session_state.random_tables = {}

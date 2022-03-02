@@ -42,7 +42,6 @@ class Writing:
         try:
             p = self.features.get_prompt(st.session_state.feat)
             p = p.format(prompt)
-            st.write(p)
             return self.write(p, model)
         except Exception as oops:
             st.error('ERROR in get_tuned function: ' + str(oops))
@@ -51,7 +50,6 @@ class Writing:
         try:
             p = self.features.get_prompt(st.session_state.feat)
             p = p.format(prompt)
-            st.write( p)
             return self.write(p, "text-davinci-001")
         except Exception as oops:
             st.error('ERROR in get_generic function: ' + str(oops))

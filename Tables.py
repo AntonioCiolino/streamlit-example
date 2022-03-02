@@ -20,4 +20,4 @@ class Tables:
         try:
             return random.choice(st.session_state.random_tables[st.session_state.sel])
         except Exception as oops:
-            st.write('ERROR in get_random_thing function:', oops)
+            st.error('ERROR in get_random_thing function:' +  oops)
