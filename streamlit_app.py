@@ -75,7 +75,12 @@ else:
             st.session_state.chapter += "\n" + Tables.Tables().get_random_thing()
 
 
-    st.info("Use the content box to enhance chapter content. Note that this takes the whole chapter; we do not handle highlighting and custom selection yet.")
+    st.info("""
+    Use the content box to enhance chapter content. Note that this takes the whole chapter; we do not handle highlighting and custom selection. 
+    
+    If a subset is needed, use the Optional Prompt functions, above.
+    
+    """)
     #completions vs. tuning.
     # make a section with the buttons near it
     col1, col2 = st.columns(2)
