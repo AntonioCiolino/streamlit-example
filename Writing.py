@@ -15,7 +15,7 @@ class Writing:
         if (dyn_prompt ==''):
             st.error('Error: No prompt provided')
         else:
-            with st.spinner('Querying OpenAI...'):
+            with st.spinner('Querying OpenAI with model ' + model + '...'):
                 # fine-tuned models requires model parameter, whereas other models require engine parameter
                 model_param = (
                     {"model": model}
