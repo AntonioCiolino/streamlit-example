@@ -13,31 +13,32 @@ class Writing:
 
     def write(self, dyn_prompt, model, temp=0.73, top_p=1.0, tokens=500, freq_pen=1.73, pres_pen=0.43, stop=["END", "Scene:", "[Scene"]):
         if (dyn_prompt):
-            return
-        with st.spinner('Querying OpenAI...'):
-            # fine-tuned models requires model parameter, whereas other models require engine parameter
-            model_param = (
-                {"model": model}
-                if ":" in model
-                   and model.split(":")[1].startswith("ft")
-                else {"engine": model}
-            )
+            st.error('Erroe: No prompt provided')
+        else:
+            with st.spinner('Querying OpenAI...'):
+                # fine-tuned models requires model parameter, whereas other models require engine parameter
+                model_param = (
+                    {"model": model}
+                    if ":" in model
+                       and model.split(":")[1].startswith("ft")
+                    else {"engine": model}
+                )
 
-            try:
-                response = openai.Completion.create(
-                    prompt=dyn_prompt,
-                    temperature=temp,
-                    max_tokens=tokens,
-                    top_p=top_p,
-                    frequency_penalty=freq_pen,
-                    presence_penalty=pres_pen,
-                    stop=stop,
-                    **model_param)
-                response = response['choices'][0]['text']
-                return response
-            except Exception as oops:
-                st.error("Completion Error: " + str(oops))
-                return "Completion Error: " + str(oops)
+                try:
+                    response = openai.Completion.create(
+                        prompt=dyn_prompt,
+                        temperature=temp,
+                        max_tokens=tokens,
+                        top_p=top_p,
+                        frequency_penalty=freq_pen,
+                        presence_penalty=pres_pen,
+                        stop=stop,
+                        **model_param)
+                    response = response['choices'][0]['text']
+                    return response
+                except Exception as oops:
+                    st.error("Completion Error: " + str(oops))
+                    return "Completion Error: " + str(oops)
 
     def get_tuned_content(self, prompt, model):
         try:
