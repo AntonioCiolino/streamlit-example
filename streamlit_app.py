@@ -33,7 +33,7 @@ if 'chapter' not in st.session_state:
     st.session_state.chapter = ""
 
 with st.expander("Enter your API Key"):
-    st.session_state.api_key = st.text_input('API Key', st.session_state.api_key)
+    st.session_state.api_key = st.text_input('API Key', st.session_state.api_key, type='password')
 
 if (st.session_state.api_key == ""):
     st.write("You need to enter your API Key to use this app.")
