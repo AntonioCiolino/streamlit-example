@@ -7,7 +7,7 @@ import Writing
 
 # check to see if this is making a difference.
 def update_content(args):
-    pass
+    st.write("previosly:", args)
 
 
 # Title of the page
