@@ -45,23 +45,13 @@ else:
     if (st.session_state.models == []):
         st.session_state.models = Writing.Writing().getModels()
 
-    with st.expander("Create random data"):
-        st.session_state.sel = st.selectbox('Create random table content', st.session_state.random_tables.keys(),
-                                                    help="Select a random table to generate content from.")
-
-        # detemine button stuff before displaying or loading text boxes
-        if st.button('Get random thing', help="Add a random thing to the content from a list of items."):
-            st.session_state.chapter += "\n" + Tables.Tables().get_random_thing()
-            st.info("Added random thing")
-
-    with st.expander("Select a Model"):
+    with st.expander("Select a Generator: choose which model that OpenAI will use to generate your content. This has two defailt models and any fine-tune models your account has created."):
         model = st.selectbox("Select a model", st.session_state.models)
 
-        prompt = st.text_input('Prompt to process', '', help="Enter a prompt to process. Used only for the features selection box.")
+        prompt = st.text_input('Prompt to process', '', help="If you have a specific short prompt, place it here to process. It will append the results to the story.")
 
         # for the prompt, if the prompt is blank, disable the controls, but still render.
         d = (prompt == "")
-        st.info("Use the select box to generate content. This will use the \"Prompt to process\" box.")
         st.session_state.feat = st.selectbox('Select a feature', st.session_state.features, disabled = d,
                                                      help="Requests data from GPT-3 in the selected style.")
 
@@ -70,25 +60,36 @@ else:
         elif (st.button('Generate generic content', help="Calls OpenAI for Davinci content based no the prompt.", disabled = d)):
             st.session_state.chapter += Writing.Writing().get_generic_content(prompt)
 
-    with st.expander("Content"):
+
+    with st.expander("Inject story data"):
+        st.info("Appends a random thing from the collection of options into the story area. THis can be used to spark ideas for yourself or the generator.")
+        st.session_state.sel = st.selectbox('Select grouping of content', st.session_state.random_tables.keys(),
+                                            help="Select a random table to generate content from.")
+
+        # detemine button stuff before displaying or loading text boxes
+        if st.button('Inject a thing', help="Add a random thing to the content from a list of items."):
+            st.session_state.chapter += "\n" + Tables.Tables().get_random_thing()
+
+
+    with st.expander("OpenAI Content Controls"):
         st.info("Use the content box to enhance chapter content. Note that this takes the whole chapter; we do not handle highlighting and custom selection yet.")
         #completions vs. tuning.
         # make a section with the buttons near it
         col1, col2 = st.columns(2)
         with col1:
-            if (st.button('Run tuned content', help="Calls OpenAI for fine tuned content.")):
+            if (st.button('Run selected model content', help="Calls OpenAI for model (fine tuned) content.")):
                 st.success("Sent to OpenAI: "+ st.session_state.chapter)
                 st.session_state.chapter += Writing.Writing().completeModel(st.session_state.chapter, model)
         with col2:
-            if (st.button('Run generic content', help="Calls OpenAI for classic DaVinci content.")):
+            if (st.button('Run Davinci content', help="Calls OpenAI for classic DaVinci content.")):
                 st.success("Sent to OpenAI: "+ st.session_state.chapter)
                 st.session_state.chapter += Writing.Writing().completeDavinci(st.session_state.chapter)
 
-        #not setting the text allow this to work correctly with a submit button.
-        st.text_area(label="edit your chapter",
-                     help="This is the main body for writing.",
-                     height=500,
-                     key="chapter",
-                     on_change=update_content, args=(st.session_state.chapter, ))
+    #not setting the text allow this to work correctly with a submit button.
+    st.text_area(label="Edit your chapter",
+                 help="This is the main body for writing.",
+                 height=500,
+                 key="chapter",
+                 on_change=update_content, args=(st.session_state.chapter, ))
 
 #submit_button = st.form_submit_button(label='Submit')
