@@ -39,15 +39,17 @@ if (st.session_state.api_key == ""):
     st.write("You need to enter your API Key to use this tool.")
 else:
 
-    #with st.form(key='my_form'):
-    if (st.session_state.models == []):
-        st.session_state.models = Writing.Writing().getModels()
-    model = st.selectbox("Select a model", st.session_state.models)
-
-    prompt = st.text_input('Prompt to process', '', help="Enter a prompt to process. Used only for the features selection box.")
-
     st.session_state.features = Features.Features.features
     st.session_state.random_tables = Tables.Tables().random_tables
+
+    if (st.session_state.models == []):
+        st.session_state.models = Writing.Writing().getModels()
+
+    with st.expander("Select a Model"):
+        model = st.selectbox("Select a model", st.session_state.models)
+
+        prompt = st.text_input('Prompt to process', '', help="Enter a prompt to process. Used only for the features selection box.")
+
 
     st.session_state.sel = st.sidebar.selectbox('Create random table content', st.session_state.random_tables.keys(),
                                                 help="Select a random table to pull content from.")
