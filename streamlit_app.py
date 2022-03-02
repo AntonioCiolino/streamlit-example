@@ -44,7 +44,7 @@ else:
     if (st.session_state.models == []):
         st.session_state.models = Writing.Writing().getModels()
 
-    with st.expander("Select a Generator"):
+    with st.expander("Select a Model for the generator"):
         st.caption("choose which model that OpenAI will use to generate your content. Choose DaVinci, Curie, or your own fine tuned models.")
         model = st.selectbox("Select a model", st.session_state.models)
 
