@@ -16,7 +16,7 @@ class Writing:
             st.error('Error: No prompt provided')
             return ''
         else:
-            with st.spinner('Querying OpenAI with model ' + model + '...'):
+            with st.spinner('Querying OpenAI with model \n' + model + '...'):
                 # fine-tuned models requires model parameter, whereas other models require engine parameter
                 model_param = (
                     {"model": model}
