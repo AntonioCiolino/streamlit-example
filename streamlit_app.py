@@ -12,9 +12,9 @@ def update_content(args):
 
 # Title of the page
 st.title('WordPlay')
-st.write("""
+st.info("""
 an app that helps users come up with new and interesting words for their writing projects.")
- DO NOT DEPEND ON THIS TOOL TO KEEP YOUR STORY. It can reset at any time.
+DO NOT DEPEND ON THIS TOOL TO KEEP YOUR STORY. It can reset at any time.
  """)
 
 if 'random_tables' not in st.session_state:
@@ -64,7 +64,7 @@ else:
             st.session_state.chapter += Writing.Writing().get_generic_content(prompt)
 
     with st.expander("Inject random data"):
-        st.info("Appends a random thing from the collection of options into the story area. This can be used to spark ideas for yourself or the generator."")
+        st.info("Appends a random thing from the collection of options into the story area. This can be used to spark ideas for yourself or the generator.")
         st.session_state.sel = st.selectbox('Select grouping of content', st.session_state.random_tables.keys(),
                                             help="Select a random table to generate content from.")
 
