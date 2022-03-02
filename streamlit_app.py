@@ -51,8 +51,8 @@ else:
 
         # detemine button stuff before displaying or loading text boxes
         if st.button('Get random thing', help="Add a random thing to the content from a list of items."):
-            st.info("Added random thing")
             st.session_state.chapter += "\n" + Tables.Tables().get_random_thing()
+            st.info("Added random thing")
 
     with st.expander("Select a Model"):
         model = st.selectbox("Select a model", st.session_state.models)
