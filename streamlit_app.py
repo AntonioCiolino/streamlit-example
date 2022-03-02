@@ -91,7 +91,4 @@ else:
                      key="chapter",
                      on_change=update_content, args=(st.session_state.chapter, ))
 
-        st.info(st.session_state.chapter)
-
-
 #submit_button = st.form_submit_button(label='Submit')
