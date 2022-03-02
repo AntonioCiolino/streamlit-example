@@ -71,7 +71,6 @@ else:
     with st.expander("Content"):
         st.sidebar.info("Use the content box to enhance chapter content. Note that this takes the whole chapter; we do not handle highlighting and custom selection yet.")
         #completions vs. tuning.
-        st.write(st.session_state.chapter)
         # make a section with the buttons near it
         col1, col2 = st.columns(2)
         with col1:
@@ -90,5 +89,7 @@ else:
                      key="chapter",
                      on_change=update_content, args=(st.session_state.chapter, ))
 
+        st.info(st.session_state.chapter)
 
-        #submit_button = st.form_submit_button(label='Submit')
+
+#submit_button = st.form_submit_button(label='Submit')
