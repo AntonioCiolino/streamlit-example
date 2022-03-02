@@ -17,7 +17,7 @@ st.warning("""
 
 DO NOT DEPEND ON THIS TOOL TO KEEP YOUR STORY. 
 
-It depends on session stae, and it can reset at any time.
+It depends on session state, and it can reset at any time.
  """)
 
 if 'random_tables' not in st.session_state:
@@ -37,14 +37,12 @@ if 'models' not in st.session_state:
 if 'chapter' not in st.session_state:
     st.session_state.chapter = ""
 
-if (st.session_state.api_key == ""):
-    with st.expander("Enter your API Key"):
-        st.session_state.api_key = st.text_input('API Key', st.session_state.api_key)
+with st.expander("Enter your API Key"):
+    st.session_state.api_key = st.text_input('API Key', st.session_state.api_key)
 
 if (st.session_state.api_key == ""):
     st.write("You need to enter your API Key to use this app.")
 else:
-
     st.session_state.features = Features.Features.features
     st.session_state.random_tables = Tables.Tables().random_tables
 
