@@ -15,7 +15,9 @@ st.title('WordPlay')
 st.caption("An app that helps users come up with new and interesting words for their writing projects.")
 st.warning("""
 
-DO NOT DEPEND ON THIS TOOL TO KEEP YOUR STORY. It depends on session stae, and it can reset at any time.
+DO NOT DEPEND ON THIS TOOL TO KEEP YOUR STORY. 
+
+It depends on session stae, and it can reset at any time.
  """)
 
 if 'random_tables' not in st.session_state:
@@ -60,10 +62,13 @@ else:
         st.session_state.feat = st.selectbox('Select a style', st.session_state.features, disabled = d,
                                              help="Requests data from GPT-3 in the selected style.")
 
-        if (st.button('Generate tuned content', help="Calls OpenAI for fine tuned content based on the prompt.", disabled = d)):
-            st.session_state.chapter += Writing.Writing().get_tuned_content(prompt, model)
-        elif (st.button('Generate generic content', help="(Shortcut) Calls OpenAI for Davinci content based no the prompt.", disabled = d)):
-            st.session_state.chapter += Writing.Writing().get_generic_content(prompt)
+        col1, col2 = st.columns(2)
+        with col1:
+            if (st.button('Generate tuned content', help="Calls OpenAI for fine tuned content based on the prompt.", disabled = d)):
+                st.session_state.chapter += Writing.Writing().get_tuned_content(prompt, model)
+        with col2:
+            if (st.button('Generate generic content', help="(Shortcut) Calls OpenAI for Davinci content based no the prompt.", disabled = d)):
+                st.session_state.chapter += Writing.Writing().get_generic_content(prompt)
 
     with st.expander("Tool: Inject random data"):
         st.caption("Appends a random thing from the collection of options into the story area. This can be used to spark ideas for yourself or the generator.")
