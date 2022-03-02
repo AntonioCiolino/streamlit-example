@@ -34,7 +34,7 @@ if 'models' not in st.session_state:
 if 'chapter' not in st.session_state:
     st.session_state.chapter = ""
 
-with st.expander("Enter your API Key here"):
+with st.expander("Enter your API Key"):
     st.session_state.api_key = st.text_input('API Key', st.session_state.api_key)
 
 if (st.session_state.api_key == ""):
@@ -56,15 +56,15 @@ else:
         # for the prompt, if the prompt is blank, disable the controls, but still render.
         d = (prompt == "")
         st.session_state.feat = st.selectbox('Select a style', st.session_state.features, disabled = d,
-                                                     help="Requests data from GPT-3 in the selected style.")
+                                             help="Requests data from GPT-3 in the selected style.")
 
         if (st.button('Generate tuned content', help="Calls OpenAI for fine tuned content based on the prompt.", disabled = d)):
             st.session_state.chapter += Writing.Writing().get_tuned_content(prompt, model)
         elif (st.button('Generate generic content', help="Calls OpenAI for Davinci content based no the prompt.", disabled = d)):
             st.session_state.chapter += Writing.Writing().get_generic_content(prompt)
 
-
-    with st.expander("Inject random data", help="Appends a random thing from the collection of options into the story area. This can be used to spark ideas for yourself or the generator."):
+    with st.expander("Inject random data"):
+        st.info("Appends a random thing from the collection of options into the story area. This can be used to spark ideas for yourself or the generator."")
         st.session_state.sel = st.selectbox('Select grouping of content', st.session_state.random_tables.keys(),
                                             help="Select a random table to generate content from.")
 
