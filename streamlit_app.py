@@ -70,19 +70,26 @@ else:
 
     st.sidebar.info("Use the content box to enhance chapter content. Note that this takes the whole chapter; we do not handle highlighting and custom selection yet.")
     #completions vs. tuning.
-    if (st.sidebar.button('Run tuned content', help="Calls OpenAI for fine tuned content.")):
-        st.success("using: "+ st.session_state.chapter)
-        st.session_state.chapter += Writing.Writing().completeModel(st.session_state.chapter, model)
-    if (st.sidebar.button('Run generic content', help="Calls OpenAI for classic DaVinci content.")):
-        st.success("using: "+ st.session_state.chapter)
-        st.session_state.chapter += Writing.Writing().completeDavinci(st.session_state.chapter)
 
-    #not setting the text allow this to work correctly with a submit button.
-    st.text_area(label="edit your chapter",
-                 help="This is the main body for writing.",
-                 height=500,
-                 key="chapter",
-                 on_change=update_content, args=(st.session_state.chapter, ))
+    with st.expander("Content"):
+        st.write(st.session_state.chapter)
+        # make a section with the buttons near it
+        #not setting the text allow this to work correctly with a submit button.
+        st.text_area(label="edit your chapter",
+                     help="This is the main body for writing.",
+                     height=500,
+                     key="chapter",
+                     on_change=update_content, args=(st.session_state.chapter, ))
+        col1, col2 = st.columns(2)
+        with col1:
+            if (st.button('Run tuned content', help="Calls OpenAI for fine tuned content.")):
+                st.success("Sent to OpenAI: "+ st.session_state.chapter)
+                st.session_state.chapter += Writing.Writing().completeModel(st.session_state.chapter, model)
+        with col2:
+            if (st.button('Run generic content', help="Calls OpenAI for classic DaVinci content.")):
+                st.success("Sent to OpenAI: "+ st.session_state.chapter)
+                st.session_state.chapter += Writing.Writing().completeDavinci(st.session_state.chapter)
+
 
 
         #submit_button = st.form_submit_button(label='Submit')
