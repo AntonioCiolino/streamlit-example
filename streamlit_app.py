@@ -74,19 +74,19 @@ else:
         if st.button('Inject a thing', help="Add a random thing to the content from a list of items."):
             st.session_state.chapter += "\n" + Tables.Tables().get_random_thing()
 
-    with st.expander("Content Generation Controls"):
-        st.info("Use the content box to enhance chapter content. Note that this takes the whole chapter; we do not handle highlighting and custom selection yet.")
-        #completions vs. tuning.
-        # make a section with the buttons near it
-        col1, col2 = st.columns(2)
-        with col1:
-            if (st.button('Run selected model content', help="Calls OpenAI for model (fine tuned) content.")):
-                # st.success("Sent to OpenAI: "+ st.session_state.chapter)
-                st.session_state.chapter += Writing.Writing().completeModel(st.session_state.chapter, model)
-        with col2:
-            if (st.button('Run Davinci content', help="Calls OpenAI for classic DaVinci content.")):
-                # st.success("Sent to OpenAI: "+ st.session_state.chapter)
-                st.session_state.chapter += Writing.Writing().completeDavinci(st.session_state.chapter)
+
+    st.info("Use the content box to enhance chapter content. Note that this takes the whole chapter; we do not handle highlighting and custom selection yet.")
+    #completions vs. tuning.
+    # make a section with the buttons near it
+    col1, col2 = st.columns(2)
+    with col1:
+        if (st.button('Run selected model content', help="Calls OpenAI for model (fine tuned) content.")):
+            # st.success("Sent to OpenAI: "+ st.session_state.chapter)
+            st.session_state.chapter += Writing.Writing().completeModel(st.session_state.chapter, model)
+    with col2:
+        if (st.button('Run Davinci content', help="Calls OpenAI for classic DaVinci content.")):
+            # st.success("Sent to OpenAI: "+ st.session_state.chapter)
+            st.session_state.chapter += Writing.Writing().completeDavinci(st.session_state.chapter)
 
     #not setting the text allow this to work correctly with a submit button.
     st.text_area(label="Your chapter",
