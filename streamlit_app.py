@@ -13,7 +13,9 @@ def update_content(args):
 # Title of the page
 st.title('WordPlay')
 st.info("""
-an app that helps users come up with new and interesting words for their writing projects.")
+an app that helps users come up with new and interesting words for their writing projects.
+
+
 DO NOT DEPEND ON THIS TOOL TO KEEP YOUR STORY. It can reset at any time.
  """)
 
