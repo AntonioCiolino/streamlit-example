@@ -12,11 +12,10 @@ def update_content(args):
 
 # Title of the page
 st.title('WordPlay')
-st.info("""
-an app that helps users come up with new and interesting words for their writing projects.
+st.caption("An app that helps users come up with new and interesting words for their writing projects.")
+st.warning("""
 
-
-DO NOT DEPEND ON THIS TOOL TO KEEP YOUR STORY. It can reset at any time.
+DO NOT DEPEND ON THIS TOOL TO KEEP YOUR STORY. It depends on session stae, and it can reset at any time.
  """)
 
 if 'random_tables' not in st.session_state:
@@ -85,11 +84,11 @@ else:
     # make a section with the buttons near it
     col1, col2 = st.columns(2)
     with col1:
-        if (st.button('Run selected model content', help="Calls OpenAI for model (fine tuned) content.")):
+        if (st.button('Get selected model content', help="Sends the story to OpenAI for additional model (fine tuned) content.")):
             # st.success("Sent to OpenAI: "+ st.session_state.chapter)
             st.session_state.chapter += Writing.Writing().completeModel(st.session_state.chapter, model)
     with col2:
-        if (st.button('Run Davinci content', help="Calls OpenAI for classic DaVinci content.")):
+        if (st.button('Get Davinci content', help="Sends the story to OpenAI for additional DaVinci (GPT-3) content.")):
             # st.success("Sent to OpenAI: "+ st.session_state.chapter)
             st.session_state.chapter += Writing.Writing().completeDavinci(st.session_state.chapter)
 
