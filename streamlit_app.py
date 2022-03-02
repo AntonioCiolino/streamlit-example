@@ -71,8 +71,10 @@ else:
     st.sidebar.info("Use the content box to enhance chapter content. Note that this takes the whole chapter; we do not handle highlighting and custom selection yet.")
     #completions vs. tuning.
     if (st.sidebar.button('Run tuned content', help="Calls OpenAI for fine tuned content.")):
+        st.success("using: "+ st.session_state.chapter)
         st.session_state.chapter += Writing.Writing().completeModel(st.session_state.chapter, model)
     if (st.sidebar.button('Run generic content', help="Calls OpenAI for classic DaVinci content.")):
+        st.success("using: "+ st.session_state.chapter)
         st.session_state.chapter += Writing.Writing().completeDavinci(st.session_state.chapter)
 
     #not setting the text allow this to work correctly with a submit button.
@@ -83,5 +85,4 @@ else:
                  on_change=update_content, args=(st.session_state.chapter, ))
 
 
-    st.success("Session state Content 4: "+ st.session_state.chapter)
         #submit_button = st.form_submit_button(label='Submit')
