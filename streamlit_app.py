@@ -23,8 +23,6 @@ if 'sel' not in st.session_state:
     st.session_state.sel = ""
 if 'feat' not in st.session_state:
     st.session_state.feat = ""
-if 'chapter' not in st.session_state:
-    st.session_state.chapter = "Example text goes here"
 if 'api_key' not in st.session_state:
     st.session_state.api_key = ""
 if 'result' not in st.session_state:
@@ -84,8 +82,8 @@ else:
                          height=500,
                          key="chapter",
                          on_change=update_content, args=(st.session_state.chapter, ))
-    if (cpost != st.session_state.chapter):
-        st.session_state.chapter = cpost
+    # if (cpost != st.session_state.chapter):
+    #     st.session_state.chapter = cpost
 
     st.success("Session state Content: "+ st.session_state.chapter)
         #submit_button = st.form_submit_button(label='Submit')
