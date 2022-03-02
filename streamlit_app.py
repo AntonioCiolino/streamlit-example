@@ -54,6 +54,15 @@ else:
         st.caption("choose which model that OpenAI will use to generate your content. Choose DaVinci, Curie, or your own fine tuned models.")
         model = st.selectbox("Select a model", st.session_state.models)
 
+    with st.expander("Tool: Inject random data"):
+        st.caption("Appends a random thing from the collection of options into the story area. This can be used to spark ideas for yourself or the generator.")
+        st.session_state.sel = st.selectbox('Select grouping of content', st.session_state.random_tables.keys(),
+                                            help="Select a random table to generate content from.")
+
+        # detemine button stuff before displaying or loading text boxes
+        if st.button('Inject a thing', help="Add a random thing to the content from a list of items."):
+            st.session_state.chapter += "\n" + Tables.Tables().get_random_thing()
+
     with st.expander("Optional prompt: generate a style based on a specific sentence, phrase or idea."):
         prompt = st.text_input('Prompt to process', '', help="If you have a specific short prompt, place it here to process. It will append the results to the story.")
 
@@ -69,16 +78,6 @@ else:
         with col2:
             if (st.button('Generate generic content', help="(Shortcut) Calls OpenAI for Davinci content based no the prompt.", disabled = d)):
                 st.session_state.chapter += Writing.Writing().get_generic_content(prompt)
-
-    with st.expander("Tool: Inject random data"):
-        st.caption("Appends a random thing from the collection of options into the story area. This can be used to spark ideas for yourself or the generator.")
-        st.session_state.sel = st.selectbox('Select grouping of content', st.session_state.random_tables.keys(),
-                                            help="Select a random table to generate content from.")
-
-        # detemine button stuff before displaying or loading text boxes
-        if st.button('Inject a thing', help="Add a random thing to the content from a list of items."):
-            st.session_state.chapter += "\n" + Tables.Tables().get_random_thing()
-
 
     st.info("""
     Use the content box to enhance chapter content. Note that this takes the whole chapter; we do not handle highlighting and custom selection. 
