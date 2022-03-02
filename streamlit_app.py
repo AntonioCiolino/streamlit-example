@@ -13,7 +13,10 @@ def update_content(args):
 # Title of the page
 st.title('WordPlay')
 # st.header("Lorem Ipsum.")
-st.write("an app that helps users come up with new and interesting words for their writing projects.")
+st.write("""
+an app that helps users come up with new and interesting words for their writing projects.")
+ DO NOT DEPEND ON THIS TOOL TO KEEP YOUR STORY. It can reset at any time.
+ """)
 
 if 'random_tables' not in st.session_state:
     st.session_state.random_tables = {}
@@ -45,14 +48,15 @@ else:
     if (st.session_state.models == []):
         st.session_state.models = Writing.Writing().getModels()
 
-    with st.expander("Select a Generator: choose which model that OpenAI will use to generate your content. This has two defailt models and any fine-tune models your account has created."):
+    with st.expander("Select a Generator: choose which model that OpenAI will use to generate your content."):
         model = st.selectbox("Select a model", st.session_state.models)
 
+    with st.expander("Optional prompt: generate a style baed on a specific sentence, phrase or idea."):
         prompt = st.text_input('Prompt to process', '', help="If you have a specific short prompt, place it here to process. It will append the results to the story.")
 
         # for the prompt, if the prompt is blank, disable the controls, but still render.
         d = (prompt == "")
-        st.session_state.feat = st.selectbox('Select a feature', st.session_state.features, disabled = d,
+        st.session_state.feat = st.selectbox('Select a style', st.session_state.features, disabled = d,
                                                      help="Requests data from GPT-3 in the selected style.")
 
         if (st.button('Generate tuned content', help="Calls OpenAI for fine tuned content based on the prompt.", disabled = d)):
@@ -61,7 +65,7 @@ else:
             st.session_state.chapter += Writing.Writing().get_generic_content(prompt)
 
 
-    with st.expander("Inject story data"):
+    with st.expander("Inject random data"):
         st.info("Appends a random thing from the collection of options into the story area. THis can be used to spark ideas for yourself or the generator.")
         st.session_state.sel = st.selectbox('Select grouping of content', st.session_state.random_tables.keys(),
                                             help="Select a random table to generate content from.")
@@ -70,8 +74,7 @@ else:
         if st.button('Inject a thing', help="Add a random thing to the content from a list of items."):
             st.session_state.chapter += "\n" + Tables.Tables().get_random_thing()
 
-
-    with st.expander("OpenAI Content Controls"):
+    with st.expander("Content Generation Controls"):
         st.info("Use the content box to enhance chapter content. Note that this takes the whole chapter; we do not handle highlighting and custom selection yet.")
         #completions vs. tuning.
         # make a section with the buttons near it
@@ -86,8 +89,8 @@ else:
                 st.session_state.chapter += Writing.Writing().completeDavinci(st.session_state.chapter)
 
     #not setting the text allow this to work correctly with a submit button.
-    st.text_area(label="Edit your chapter",
-                 help="This is the main body for writing.",
+    st.text_area(label="Your chapter",
+                 help="The story that you are creating is here. You can add content to it by clicking the buttons above.")
                  height=500,
                  key="chapter",
                  on_change=update_content, args=(st.session_state.chapter, ))
