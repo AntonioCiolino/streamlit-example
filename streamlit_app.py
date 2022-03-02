@@ -84,7 +84,6 @@ else:
 
     #not setting the text allow this to work correctly with a submit button.
     cpost = st.text_area(label="edit your chapter",
-                         value = st.session_state.chapter,
                          help="This is the main body for writing.",
                          height=500,
                          key="chapter",
