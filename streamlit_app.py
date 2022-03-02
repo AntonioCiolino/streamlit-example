@@ -7,7 +7,7 @@ import Writing
 
 # check to see if this is making a difference.
 def update_content(args):
-    st.write("previosly:", args)
+    st.write("args:", args)
 
 
 # Title of the page
@@ -32,6 +32,7 @@ if 'models' not in st.session_state:
 if 'chapter' not in st.session_state:
     st.session_state.chapter = ""
 
+st.write("Session Content State:", st.session_state.chapter)
 
 with st.expander("Enter your API Key here"):
     st.session_state.api_key = st.text_input('API Key', st.session_state.api_key)
